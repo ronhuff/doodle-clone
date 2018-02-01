@@ -4,8 +4,9 @@
 //          - n number of availabilities.  Perhaps those can be strings in a format
 //          - such as "MM/DD/YYYY hh:mm:ss -> MM/DD/YYYY hh:mm:ss"
 
+
 var person = {
     var firstName,
     var lastName,
-        
+
 };
