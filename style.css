@@ -19,11 +19,13 @@ h1 {
     margin: 0 auto;
     color: white;
 }
+p {
+  line-height: 80%;
+}
 
 #credits {
   margin-top: 80px;
   border-radius: 5px;
   max-width: 150px;
   color: white;
-  line-height: 80%;
 }
