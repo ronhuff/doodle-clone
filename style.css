@@ -1,21 +1,29 @@
 body {
     /*Background gradients created by https://uigradients.com/# */
-    background: #40E0D0;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #FF0080, #FF8C00, #40E0D0);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #FF0080, #FF8C00, #40E0D0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+    height: 1080px;
 }
 
-.events {
-    background: #60ffa0;
-    color black;
-    width: 45%;
-    border: solid black 2px;
+form {
+    width=100%;
 }
 
-.admin {
-    background: #60a0ff;
-    color: black;
-    width: 45%;
-    border: solid black 2px;
+input {
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 0 auto;
+    color: white;
+}
+
+#credits {
+  margin-top: 80px;
+  border-radius: 5px;
+  max-width: 150px;
+  color: white;
+  line-height: 80%;
 }
