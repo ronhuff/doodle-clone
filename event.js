@@ -1,0 +1,5 @@
+//event.js
+
+var event = {
+    
+}
