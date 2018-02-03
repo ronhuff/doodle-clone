@@ -8,24 +8,52 @@
 <body>
     <h1>Welcome to the Event Creator Page!</h1>
     <p><a href="landing.html">Back to Landing Page</a></p>
-    <p><a href="setavail.html">View events and Set Availability</a></p>
-    <div>
-      <h2>Event List:</h2>
+    <p><a href="setavail.html">View events and Set Availability</a></p>    <form>
+        <input type="text" name="admin" placeholder="Admin last name" maxlength="64" required=true type=string id="lName">
+        <br>
+        <input type="text" name="event_name" placeholder="Event name" maxlength="64" required=true type=string id="evName">
+        <br>
+        <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
+        <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
+             MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
+        <script>
+            function checkDate(date) // where date is MM/DD/YYYY
+            {
+                if(date.slice(0,2) == 01 && date.slice(3,5) == 01)
+                {
+                    alert("No meetings permitted to be scheduled on New Year's Day.")
+                    return (false)
+                }
+                if(date.slice(0,2) == 07 && date.slice(3,5) == 04)
+                {
+                    alert("No meetings permitted to be scheduled on Independence Day.")
+                    return (false)
+                }
+                if(date.slice(0,2) == 12 && date.slice(3,5) == 25)
+                {
+                    alert("No meetings permitted to be scheduled on Christmas Day.")
+                }
+                return (true)
+            }
+            var eventDate = document.getElementById("evDate")
+            //did some reading about this online, this may work?
+            //otherways perhaps just passing in date would work and I have just tried to use the code incorrectly.
+            //please advise. 2-2-18 ronhuff
 
 
-    </div>
-    <div>
-      <form>
-          <input type="text" name="admin" placeholder="Admin last name" maxlength="64">
-          <br>
-          <input type="text" name="event" placeholder="Event name" maxlength="64">
-          <br>
-          <input type="date" name="date">
-          <br>
-          <!-- <button id="adder">submit</button> -->
-      </form>
-      <button id="adder">submit</button>
-    </div>
+
+            if(checkDate(eventDate))
+            {
+                alert("Date looks good!")
+            }
+            else
+            {
+                alert("Invalid date!")
+            }
+        </script>
+        <br>
+        <input type="submit">
+    </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="adder.js"></script>
