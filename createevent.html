@@ -9,16 +9,25 @@
     <h1>Welcome to the Event Creator Page!</h1>
     <p><a href="landing.html">Back to Landing Page</a></p>
     <p><a href="setavail.html">View events and Set Availability</a></p>
-    <form>
-        <input type="text" name="admin" placeholder="Admin last name" maxlength="64">
-        <br>
-        <input type="text" name="event_name" placeholder="Event name" maxlength="64">
-        <br>
-        <input type="date">
-        <br>
-        <input type="submit">
-    </form>
+    <div>
+      <h2>Event List:</h2>
+
+
+    </div>
+    <div>
+      <form>
+          <input type="text" name="admin" placeholder="Admin last name" maxlength="64">
+          <br>
+          <input type="text" name="event" placeholder="Event name" maxlength="64">
+          <br>
+          <input type="date" name="date">
+          <br>
+          <!-- <button id="adder">submit</button> -->
+      </form>
+      <button id="adder">submit</button>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="adder.js"></script>
 </body>
 </html>
