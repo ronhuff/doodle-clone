@@ -1,3 +1,23 @@
+function checkDate(date)
+{
+    if(date.slice(5,7) == 01 && date.slice(8,10) == 01)
+    {
+        alert("No meetings permitted to be scheduled on New Year's Day.");
+        return (false);
+    }
+    if(date.slice(5,7) == 07 && date.slice(8,10) == 04)
+    {
+        alert("No meetings permitted to be scheduled on Independence Day.");
+        return (false);
+    }
+    if(date.slice(5,7) == 12 && date.slice(8,10) == 25)
+    {
+        alert("No meetings permitted to be scheduled on Christmas Day.");
+        return (false);
+    }
+    return (true);
+}
+
 runChecks = function() {
   //Make a Document object for the data from the form when submit is clicked.
   var data = document.forms["eventMaker"];
@@ -14,7 +34,6 @@ runChecks = function() {
   //It is possible to change how this String is output, but it would probably be easier to adjust to it.
   var date = data["date"].value;
   console.log(date);
-
 
   //----------------------------------------------------------------------------
   //+++++++++++++++++++++++    BEGIN TEST CODE        ++++++++++++++++++++++++++
@@ -33,7 +52,11 @@ runChecks = function() {
   //...
   //...
   //...
-
+  if(!checkDate(date))
+  {
+      console.log("Date failed")
+      return false;
+  }
   //If none of the tests you wrote fail, this code runs.
   else {
     //If "Everything passed" shows up in the console, all tests you wrote passed.
