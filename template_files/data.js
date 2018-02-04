@@ -18,6 +18,17 @@ function checkDate(date)
     return (true);
 }
 
+function checkTime(time1, time2) // where time is HH:MM && time1 is begin, time2 is end
+{
+    //this means they are attempting to request a time from the next day which is disallowed.
+    if(time2 < time1)
+    {
+        alert("Meeting may not extend into next calendar day.");
+        return (false);
+    }
+    return (true);
+}
+
 runChecks = function() {
   //Make a Document object for the data from the form when submit is clicked.
   var data = document.forms["eventMaker"];
@@ -33,6 +44,15 @@ runChecks = function() {
   //Note: as of right now, this returns a String variable that looks like: "YYYY-MM-DD"
   //It is possible to change how this String is output, but it would probably be easier to adjust to it.
   var date = data["date"].value;
+
+  //Variable for start time value
+  //return format is HH:MM and it seems that you cannot do operations on them
+  //ie var timeTaken = etime - stime;
+  //However, booleans such as the one on line 55 will work.
+  var stime = data["stime"].value;
+  var etime = data["etime"].value;
+
+  console.log(etime > stime);
   console.log(date);
 
   //----------------------------------------------------------------------------
@@ -46,7 +66,7 @@ runChecks = function() {
     console.log("Something failed");
 
     //Returns false because something failed.
-    return false;
+    return (false);
   }
   //More if statements for each test on event name / date / admin constraints you'll write
   //...
@@ -55,7 +75,12 @@ runChecks = function() {
   if(!checkDate(date))
   {
       console.log("Date failed")
-      return false;
+      return (false);
+  }
+  if(!checkTime(stime, etime))
+  {
+      console.log("Time failed")
+      return (false);
   }
   //If none of the tests you wrote fail, this code runs.
   else {
