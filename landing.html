@@ -6,10 +6,14 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1 >Welcome to our Doodle clone!</h1>
-    <p><button onclick="window.location.href='createevent.html'">Create an Event</button></p>
-    <p><button onclick="window.location.href='setavail.html'">View Events and Set Availability</button></p>
-
+    
+    <div class="menu">
+        <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
+        <div id="dropdown" class="dd-items">
+            <a href="createevent.html">Create Event</a>
+            <a href="setavail.html">Set Availability</a>
+        </div>
+    </div><h1 >Welcome to our Doodle clone!</h1>
     <div id="credits">
       <p>Authors:</p>
       <p>Kyle Berkley</p>
@@ -20,5 +24,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="functions.js"></script>
 </body>
 </html>
