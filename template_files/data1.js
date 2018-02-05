@@ -9,6 +9,16 @@ var date = "";
 var stime = "";
 var etime = "";
 
+//Class definitions
+
+
+//End Class definitions
+function eventSubmit()
+{
+    populateData();
+    tryCreate();
+}
+
 function populateData()
 {
     data = document.forms["eventMaker"];
@@ -67,6 +77,7 @@ function checkTime() // where time is HH:MM && time1 is begin, time2 is end
 //code another way to account for this for other cases.
 function dupPersons()
 {
+    console.log("entered dupPersons(data1.js:78)");
     for(i = 0; i < driver.numPersons; i++)
     {
         if(driver.knownPersons[i].name == creator)
@@ -139,3 +150,20 @@ function tryCreate()
         return (true);*/
     }
 }
+
+
+
+
+/*
+class Rect
+{
+    constructor(x,y)
+    {
+        this.xyz = stuff;
+        this.sdfsdf = asdfsadf;
+    }
+}
+
+
+var rect1 = new Rect();
+*/
