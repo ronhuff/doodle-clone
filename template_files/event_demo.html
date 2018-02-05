@@ -9,7 +9,51 @@
 
     <!-- The "return runChecks()" on line 12 runs your JavaScript tests when you submit code-->
     <!-- For now, just know that between here ... -->
-    <form onsubmit="return runChecks()" name="eventMaker">
+    <script>
+        var driver =
+        {
+            meetings    : [],
+            numMeetings : 0,
+            knownPersons: [],
+            numPersons  : 0,
+            addMeeting  : function()
+            {
+                var meeting =
+                {
+                     name:event_name,
+                     date:date,
+                     creator:creator,
+                     stime:stime,
+                     etime:etime,
+                     timeSlots:[],
+                     numTimeSlots:0
+                };
+
+                this.meetings.push(meeting);
+
+                this.numMeetings++;
+                if(!dupPersons())
+                {
+                 //creates a person for the driver/s knownPersons array.
+                 this.knownPersons.push(person = {firstname:creator, lastname:""});
+                 this.knownPersons++;
+                }
+
+
+                var startHr = Number(stime.slice(0, 2));
+                var startMin = Number(stime.slice(3, 5));
+                var endHr = Number(stime.slice(0, 2));
+                var endMin = Number(stime.slice(3, 5));
+                var deltaHr = endHr - startHr;
+                var deltaMin = endMin - startMin;
+                var totalMins = deltaMin + (deltaHr * 60);
+                var numTimeslots = totalMins / 20;
+            }
+        };
+        //run updateData() method to populate driver object from file
+    </script>
+
+    <form onsubmit="populateData();tryCreate();" name="eventMaker">
       <input type="text" name="admin" placeholder="Admin Name">
       <input type="text" name="event" placeholder="Event Name">
       <input type="date" name="date">
@@ -20,6 +64,6 @@
     </form>
     <!-- ... and here, is the code that receives data from the user and hands it to the Javascript file -->
 
-    <script src="data.js"></script>
+    <script src="data1.js"></script>
   </body>
 </html>
