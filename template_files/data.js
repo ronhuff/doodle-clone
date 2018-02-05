@@ -1,3 +1,13 @@
+var meeting = {name:"", stime:"HH:MM", etime:"HH:MM", timeSlots:[], creator:""};
+
+var driver = {meetings:[], numMeetings:0, knownPersons:[], numPersons:0};
+
+var timeSlot = {stime:"HH:MM", etime:"HH:MM", attendees:[], numAtt:0};
+
+var person = {firstname:"", lastname:"" };
+
+
+//General event date and time creation constraints below.
 function checkDate(date)
 {
     if(date.slice(5,7) == 01 && date.slice(8,10) == 01)
@@ -29,7 +39,20 @@ function checkTime(time1, time2) // where time is HH:MM && time1 is begin, time2
     return (true);
 }
 
-runChecks = function() {
+function dupMeet(storedEventObj, newEventObj, numMeetings)
+{
+    for(i = 0; i < numMeetings; i++)
+    {
+        if(storedEventObj.name == newEventObj.name && storedEventObj.date == newEventObj.date && newEventObj.creator == storedEventObj.creator)
+        {
+            alert("This event has already been created!");
+            return(true);
+        }
+    }
+}
+//runChecks() is going to almost function as a driver object.  That being said,
+//I feel like we should implement some sort of driver object that will be able to modify meetings & person objects, etc.
+runChecks = function(data) {
   //Make a Document object for the data from the form when submit is clicked.
   var data = document.forms["eventMaker"];
 
@@ -55,12 +78,28 @@ runChecks = function() {
   console.log(etime > stime);
   console.log(date);
 
+  if(driver.numMeetings > 0)
+  {
+      alert("Entered numMeetings > 0 block");
+      console.log("Entered numMeetings > 0 block");
+      //Checks if meeting date, name and creator properties are equal to the same properties already in our meetings[] array.
+      if(dupMeet(driver.meetings[i], meeting = {name:event_name, creator:creator, stime:stime, etime:etime}, driver.numMeetings))
+      {
+          alert("This event already has already been created.");
+          return (false); //for testing purposes, later we will be adding other things I"m sure.
+      }
+  }
+
   //----------------------------------------------------------------------------
   //+++++++++++++++++++++++    BEGIN TEST CODE        ++++++++++++++++++++++++++
   //----------------------------------------------------------------------------
 
   //Example test:
-  if (creator != "Bardas" && creator != "Slagle" && creator != "Huff") {
+
+
+
+  if (creator != "Bardas" && creator != "Slagle" && creator != "Huff")
+  {
     //When "Something failed" shows up at the console, you'll know this test failed.
     //You'll make your own console.log() output statements to test shit.
     console.log("Something failed");
@@ -74,19 +113,23 @@ runChecks = function() {
   //...
   if(!checkDate(date))
   {
-      console.log("Date failed")
+      console.log("Date failed");
       return (false);
   }
-  if(!checkTime(stime, etime))
+  else if(!checkTime(stime, etime))
   {
-      console.log("Time failed")
+      console.log("Time failed");
       return (false);
   }
   //If none of the tests you wrote fail, this code runs.
-  else {
+  else
+  {
     //If "Everything passed" shows up in the console, all tests you wrote passed.
     console.log("Everything passed");
-
+    console.log("Attempting to create meeting event....*DBG");
+    driver.meetings.push(meeting = {name:event_name, creator:creator, stime:stime, etime:etime});
+    driver.numMeetings++;
+    alert("numMeetings = " + numMeetings + " *DBG");
     //This is still return 'false', or else the page will refresh, which is inconvenient for testing.
     //Eventually we will return 'true', and the data will be sent to our file for I/O when you finish tests.
     return false;
