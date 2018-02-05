@@ -30,6 +30,11 @@ p {
   color: white;
 }
 
+.header {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 8px;
+}
 
 /* Dropdown Menu*/
 .dropmenu {
