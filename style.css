@@ -44,6 +44,18 @@ p {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+iframe {
+  float: right;
+  display: inline-block;
+}
+
+.Event_list {
+  width: 50%;
+  text-align: center
+  display: inline-block;
 }
 
 .dropmenu:hover, .dropmenu:focus {
