@@ -78,7 +78,8 @@ function dupMeet(storedEventObj, newEventObj, numMeetings)
 }
 //runChecks() is going to almost function as a driver object.  That being said,
 //I feel like we should implement some sort of driver object that will be able to modify meetings & person objects, etc.
-createEvent = function() {
+function createEvent()
+{
   //Make a Document object for the data from the form when submit is clicked.
   var data = document.forms["eventMaker"];
 

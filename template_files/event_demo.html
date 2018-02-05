@@ -18,10 +18,39 @@
             numPersons  : 0,
             addMeeting  : function()
             {
-                meetings.push(meeting = {name:event_name, date:date, creator:creator, stime:stime, etime:etime});
+                var meeting =
+                {
+                     name:event_name,
+                     date:date,
+                     creator:creator,
+                     stime:stime,
+                     etime:etime,
+                     timeSlots:[],
+                     numTimeSlots:0
+                };
+
+                this.meetings.push(meeting);
+
+                this.numMeetings++;
+                if(!dupPersons())
+                {
+                 //creates a person for the driver/s knownPersons array.
+                 this.knownPersons.push(person = {firstname:creator, lastname:""});
+                 this.knownPersons++;
+                }
+
+
+                var startHr = Number(stime.slice(0, 2));
+                var startMin = Number(stime.slice(3, 5));
+                var endHr = Number(stime.slice(0, 2));
+                var endMin = Number(stime.slice(3, 5));
+                var deltaHr = endHr - startHr;
+                var deltaMin = endMin - startMin;
+                var totalMins = deltaMin + (deltaHr * 60);
+                var numTimeslots = totalMins / 20;
             }
         };
-        <!-- run updateData() method to populate driver object from file -->
+        //run updateData() method to populate driver object from file
     </script>
 
     <form onsubmit="populateData();tryCreate();" name="eventMaker">
