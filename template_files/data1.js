@@ -9,10 +9,15 @@ var date = "";
 var stime = "";
 var etime = "";
 
-//Class definitions
 
+function exportData()
+{
+    console.log(driver.meetings.join(','));
+    console.log(driver.numMeetings);
+    console.log(driver.meetings[0].creator);
+    console.log(driver.meetings[0].name);
+}
 
-//End Class definitions
 function eventSubmit()
 {
     populateData();
@@ -140,7 +145,7 @@ function tryCreate()
         /*
         console.log("Attempting driver.meetings.push()");
         console.log("current number of meetings: " + driver.numMeetings);
-        driver.meetings.push(meeting = {name:event_name, date:date, creator:creator, stime:stime, etime:etime});
+        driver.meetings.push(meeting = {name:, date:date, creator:creator, stime:stime, etime:etime});
         driver.numMeetings++;
         console.log("driver.numMeetings incremented. New numMeetings: " + driver.numMeetings);
         console.log(driver.meetings[0].name);
