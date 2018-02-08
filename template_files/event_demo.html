@@ -3,13 +3,15 @@
   <head>
     <title>Time Data Template</title>
   </head>
+  <script src="data1.js"></script>
   <body>
+
     <h1>Testing:</h1>
     <!-- This is a simple html file and I can run you through the basics of everything here later -->
 
     <!-- The "return runChecks()" on line 12 runs your JavaScript tests when you submit code-->
     <!-- For now, just know that between here ... -->
-    <script>
+    <script type="text/JavaScript">
         var driver =
         {
             meetings    : [],
@@ -41,17 +43,26 @@
 
                 this.meetings.push(meeting);
 
-                this.numMeetings++;
-                console.log("Perparing to enter dupPersons(html:45)");
+
+                console.log("Preparing to enter dupPersons(html:45)");
+                console.log(dupPersons());
+
                 if(!dupPersons())
                 {
-                 //creates a person for the driver's knownPersons array.
-                 var person = {firstname:creator, lastname:""};
-                 this.knownPersons.push(person);
-                 console.log(person.name + "Added to persons[] *DBG");
-                 this.knownPersons++;
+                    //creates a person for the driver's knownPersons array.
+                    var person =
+                    {
+                         firstname:creator,
+                         lastname:""
+                    };
+                    console.log("Attempting to log the person");
+                    console.log(person.firstname);
+                    this.knownPersons.push(person);
+                    console.log(person.firstname + "Added to knownPersons[] *DBG");
+                    this.numPersons++;
                 }
-
+                this.meetings[this.numMeetings].attendees.push(person);
+                this.numMeetings++;
 
                 var startHr = Number(stime.slice(0, 2));
                 var startMin = Number(stime.slice(3, 5));
@@ -83,6 +94,6 @@
     </form>
     <!-- ... and here, is the code that receives data from the user and hands it to the Javascript file -->
 
-    <script src="data1.js"></script>
+
   </body>
 </html>
