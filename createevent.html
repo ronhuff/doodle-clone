@@ -52,10 +52,17 @@
             }
         </script>
         <br>
-        <input type="submit">
+        <label for="start_time">Choose Start Time: </label>
+        <input id="start_time" type="time" name="start_time">
+        <br>
+        <label for="end_time">Choose End Time: </label>
+        <input id="end_time" type="time" name="endt_time">
+        <br>
+        <input type="button" name="submit_event" id="evSubmit" value="Submit" onclick="submitEvent()">
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="adder.js"></script>
+    <script src="submit.js"></script>
 </body>
 </html>
