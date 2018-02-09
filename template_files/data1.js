@@ -66,13 +66,35 @@ function checkTime() // where time is HH:MM && time1 is begin, time2 is end
     //Check for timeslot compliance.
 
     console.log("Entered checkTime()");
+    console.log(stime + " " + etime);
     //this means they are attempting to request a time from the next day which is disallowed.
+    var startHr = Number(stime.slice(0, 2));
+    var startMin = Number(stime.slice(3, 5));
+    var endHr = Number(etime.slice(0, 2));
+    var endMin = Number(etime.slice(3, 5));
+    console.log(startHr, startMin, endHr, endMin + " data1.js:74 *DBG");
+
+    //Check for midnight to 5 am
+    if( (startHr >= "00" && startHr < "05") || (endHr > "00" && endHr <= "05") )
+    {
+        console.log("hour values indicate time must be between 12:00 am - 5:00 am");
+        alert("Meetings may not occur between 12:00am - 5:00am");
+        return(false);
+    }
+    else if( (startHr >= "12" && startHr < "13") || ( ( endHr >= "12" && endMin > "00" ) && endHr <= "13"))
+    {
+        console.log("hour values indicate time requested must be between 12:00pm - 01:00pm");
+        alert("Meetings may not occur between 12:00pm - 1:00pm");
+        return(false);
+    }
+
     if(etime < stime)
     {
         alert("Meeting may not extend into next calendar day.");
         console.log("User attempted to set end time for calendar day that is not same as start time calendar day.");
         return (false);
     }
+    console.log("Time does not appeaer to conflict with time constraints.");
     return (true);
 }
 
