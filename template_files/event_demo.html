@@ -11,84 +11,99 @@
 
     <!-- The "return runChecks()" on line 12 runs your JavaScript tests when you submit code-->
     <!-- For now, just know that between here ... -->
-    <script type="text/JavaScript">
-        // TODO:
+
+    <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    // TODO:
         //  writeFromCSV() goes HERE!!!!
         //  also will need something on this page similar to onclose="writeToCSV()"
-        var driver =
+        //readFromFile();
+
+        //The below variable will be equal to the OBJECT that JSON.parse() returns.
+        //Uncomment line 24 when we are able to pass in the string from the file.
+        //var inDriver = JSON.parse("stringfromfile");
+        var inDriver = 1;
+        if(inDriver != null) // If inDriver is null it will create the first driver. else it will assign driver to JSON.parse() return value(object)
         {
-            meetings    : [],
-            numMeetings : 0,
-            knownPersons: [],
-            numPersons  : 0,
-            addMeeting  : function()
+            var driver =
             {
-                var meeting =
+                meetings    : [],
+                numMeetings : 0,
+                knownPersons: [],
+                numPersons  : 0,
+                addMeeting  : function()
                 {
-                     name:event_name,
-                     date:date,
-                     creator:creator,
-                     stime:stime,
-                     etime:etime,
-                     timeSlots:[],
-                     numTimeSlots:0,
-                     attendees:[],
-                     numAttend:1
-                };
-
-                var timeslot =
-                {
-                    tsStime:"12:00",
-                    tsEtime:"12:20",
-                    attendees:[],//if person is in this array, they are available for this timeslot in the meeting
-                    numAttendees:0
-                };
-
-
-                var startHr = Number(stime.slice(0, 2));
-                var startMin = Number(stime.slice(3, 5));
-                var endHr = Number(etime.slice(0, 2));
-                var endMin = Number(etime.slice(3, 5));
-                console.log(startHr, startMin, endHr, endMin);
-
-                meeting.totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
-                console.log(meeting.totalMins);
-                meeting.numTimeSlots = ( meeting.totalMins / 20 );
-                console.log("TimeSlots = " + meeting.numTimeSlots);
-
-                this.meetings.push(meeting);
-
-                console.log("Preparing to enter dupPersons(html:58) *DBG");
-
-                if(!dupPersons())
-                {
-                    //creates a person for the driver's knownPersons array.
-                    var person =
+                    var meeting =
                     {
-                         firstname:creator,
-                         lastname:""
+                         name:event_name,
+                         date:date,
+                         creator:creator,
+                         stime:stime,
+                         etime:etime,
+                         timeSlots:[],
+                         numTimeSlots:0,
+                         attendees:[],
+                         numAttend:1
                     };
-                    console.log("Attempting to log the person");
-                    console.log(person.firstname);
-                    this.knownPersons.push(person);
-                    console.log(person.firstname + "Added to knownPersons[] *DBG");
-                    this.numPersons++;
-                    this.meetings[this.numMeetings].attendees.push(person);
-                    this.numMeetings++;
+
+                    var timeslot =
+                    {
+                        tsStime:"12:00",
+                        tsEtime:"12:20",
+                        attendees:[],//if person is in this array, they are available for this timeslot in the meeting
+                        numAttendees:0
+                    };
+
+
+                    var startHr = Number(stime.slice(0, 2));
+                    var startMin = Number(stime.slice(3, 5));
+                    var endHr = Number(etime.slice(0, 2));
+                    var endMin = Number(etime.slice(3, 5));
+                    console.log(startHr, startMin, endHr, endMin);
+
+                    meeting.totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
+                    console.log(meeting.totalMins);
+                    meeting.numTimeSlots = ( meeting.totalMins / 20 );
+                    console.log("TimeSlots = " + meeting.numTimeSlots);
+
+                    this.meetings.push(meeting);
+
+                    console.log("Preparing to enter dupPersons(html:58) *DBG");
+
+                    if(!dupPersons())
+                    {
+                        //creates a person for the driver's knownPersons array.
+                        var person =
+                        {
+                             firstname:creator,
+                             lastname:""
+                        };
+                        console.log("Attempting to log the person");
+                        console.log(person.firstname);
+                        this.knownPersons.push(person);
+                        console.log(person.firstname + "Added to knownPersons[] *DBG");
+                        this.numPersons++;
+                        this.meetings[this.numMeetings].attendees.push(person);
+                        this.numMeetings++;
+                    }
+                    else
+                    {
+                        this.meetings[this.numMeetings].attendees.push(person);
+                        this.numMeetings++;
+                    }
+
+
+
+                    return (true);
+
                 }
-                else
-                {
-                    this.meetings[this.numMeetings].attendees.push(person);
-                    this.numMeetings++;
-                }
-
-
-
-                return (true);
 
             }
-
-        };
+        }
+        else
+        {
+            var driver = inDriver;
+        }
         //run updateData() method to populate driver object from file
     </script>
     <!-- TODO: onclick get all values and pass on as parameters -->
@@ -106,7 +121,6 @@
       <!--<input type="submit" action=""> action specifies destination.-->
     </form>
     <!-- ... and here, is the code that receives data from the user and hands it to the Javascript file -->
-
 
   </body>
 </html>

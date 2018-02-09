@@ -178,3 +178,38 @@ function tryCreate()
         console.log(driver.meetings[0].etime);
     }
 }
+
+function readFromFile()
+{
+    /*console.log(jQuery.get("dataStorage.txt"));
+    driver = JSON.stringify(data);
+    $.get('file_to_read.txt', function(data)
+    {
+        console.log(JSON.parse(data));
+    },
+    'text');*/
+    var txt = '';
+    var xmlhttp = new XMLHttpRequest();
+    console.log(xmlhttp);
+    xmlhttp.onreadystatechange = function()
+    {
+        if(xmlhttp.status == 200 && xmlhttp.readyState == 4)
+        {
+            txt = xmlhttp.responseText;
+        }
+    };
+    this.init = function()
+    {
+        xmlhttp.open("GET","/dataStorage.txt",true);
+        console.log(txt);
+    };
+
+    xmlhttp.send();
+}
+
+
+
+/*window.onload=function(){
+ ajax('dataStorage.txt',alertTxt)
+}
+*/
