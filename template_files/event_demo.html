@@ -4,6 +4,7 @@
     <title>Time Data Template</title>
   </head>
   <script src="data1.js"></script>
+  <script src="require.js"></script>
   <body>
 
     <h1>Testing:</h1>
@@ -13,7 +14,16 @@
     <!-- For now, just know that between here ... -->
 
     <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
+
+    <script type="text/javascript">
+        var fs = require(["fs"]);
+//GET https://sheets.googleapis.com/v4/spreadsheets/spreadsheetId?ranges=A1:A1&fields=sheets(sheetProperties,data.rowData.values(effectiveValue,effectiveFormat))
+        fs.readFile('dataStorage.txt', 'utf8', function(err, data)
+        {
+            if (err) throw err;
+            console.log(data);
+        });
+
     // TODO:
         //  writeFromCSV() goes HERE!!!!
         //  also will need something on this page similar to onclose="writeToCSV()"
@@ -21,7 +31,11 @@
 
         //The below variable will be equal to the OBJECT that JSON.parse() returns.
         //Uncomment line 24 when we are able to pass in the string from the file.
-        //var inDriver = JSON.parse("stringfromfile");
+
+        //var inString = {"meetings":[{"name":"Christmas","date":"2005-12-24","creator":"Huff","stime":"05:05","etime":"06:05","timeSlots":[],"numTimeSlots":3,"attendees":[{"firstname":"Huff","lastname":""}],"numAttend":1,"totalMins":60}],"numMeetings":1,"knownPersons":[{"firstname":"Huff","lastname":""}],"numPersons":1};
+        //var inDriver = JSON.parse(inString);
+        //var inDriver = JSON.parse("{"meetings":[{"name":"Christmas Eve","date":"2005-12-24","creator":"Huff","stime":"05:05","etime":"06:05","timeSlots":[],"numTimeSlots":3,"attendees":[{"firstname":"Huff","lastname":""}],"numAttend":1,"totalMins":60}],"numMeetings":1,"knownPersons":[{"firstname":"Huff","lastname":""}],"numPersons":1}");
+        var inputFile = "dataStorage.txt";
         var inDriver = 1;
         if(inDriver != null) // If inDriver is null it will create the first driver. else it will assign driver to JSON.parse() return value(object)
         {
