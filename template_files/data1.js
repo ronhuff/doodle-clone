@@ -1,4 +1,4 @@
-
+//TODO: TIMESLOTS. Investigate exporting to CSV.
 
 var meeting = {name:"", date:"", creator:"", stime:"HH:MM", etime:"HH:MM", timeSlots:[]};
 
@@ -86,6 +86,8 @@ function dupPersons()
     if(driver.numPersons == 0) return (false);
     for(i = 0; i < driver.numPersons; i++)
     {
+        console.log(driver.knownPersons[i].firstname);
+        console.log(creator);
         if(driver.knownPersons[i].firstname == creator)
         {
             console.log("Person already exists, not adding to knownPersons[] *DBG");
@@ -94,7 +96,7 @@ function dupPersons()
         else
         {
             console.log("New person does not exist, new person created.");
-            return (false);
+            return (true);
         }
     }
 }
@@ -138,110 +140,14 @@ function tryCreate()
     else
     {
         console.log("Attempting to call driver.addMeeting()");
-        driver.addMeeting();
-        console.log(driver.meetings[0].name);
-        console.log(driver.meetings[0].date);
-        console.log(driver.meetings[0].stime);
-        console.log(driver.meetings[0].etime);
-        /*
-        console.log("Attempting driver.meetings.push()");
-        console.log("current number of meetings: " + driver.numMeetings);
-        driver.meetings.push(meeting = {name:, date:date, creator:creator, stime:stime, etime:etime});
-        driver.numMeetings++;
-        console.log("driver.numMeetings incremented. New numMeetings: " + driver.numMeetings);
-        console.log(driver.meetings[0].name);
-        console.log(driver.meetings[0].date);
-        console.log(driver.meetings[0].stime);
-        console.log(driver.meetings[0].etime);
-        return (true);*/
-    }
-}
-
-
-
-
-/*
-class Rect
-{
-    constructor(x,y)
-    {
-        this.xyz = stuff;
-        this.sdfsdf = asdfsadf;
-    }
-}
-
-
-var rect1 = new Rect();
-*/
-
-
-//driver stuff
-/*
-function instantDriver()
-{
-    var driver =
-    {
-        meetings    : [],
-        numMeetings : 0,
-        knownPersons: [],
-        numPersons  : 0,
-        addMeeting  : function()
+        if(driver.addMeeting())
         {
-            var meeting =
-            {
-                 name:event_name,
-                 date:date,
-                 creator:creator,
-                 stime:stime,
-                 etime:etime,
-                 timeSlots:[],
-                 numTimeSlots:0,
-                 attendees:[],
-                 numAttend:1
-            };
-
-            var timeslot =
-            {
-                tsStime:"12:00",
-                tsEtime:"12:20",
-                attendees:[],//if person is in this array, they are available for this timeslot in the meeting
-                numAttendees:0
-            };
-
-            this.meetings.push(meeting);
-
-            this.numMeetings++;
-            console.log("Perparing to enter dupPersons(html:45)");
-            console.log(dupPersons());
-            if(!dupPersons())
-            {
-             //creates a person for the driver's knownPersons array.
-             var person =
-             {
-                 firstname:creator,
-                 lastname:""
-                 console.log(creator);
-             };
-
-             this.knownPersons.push(person);
-             console.log(person.name + "Added to persons[] *DBG");
-             this.knownPersons++;
-            }
-
-
-            var startHr = Number(stime.slice(0, 2));
-            var startMin = Number(stime.slice(3, 5));
-            var endHr = Number(stime.slice(0, 2));
-            var endMin = Number(stime.slice(3, 5));
-            var deltaHr = endHr - startHr;
-            var deltaMin = endMin - startMin;
-            var totalMins = deltaMin + (deltaHr * 60);
-            var numTimeslots = totalMins / 20;
-
-
+            console.log("Meeting " + driver.meetings[driver.numMeetings - 1].name + " has been created for " + driver.meetings[driver.numMeetings - 1].date);
         }
+        //DEBUG Logs
+        console.log(driver.meetings[0].name);
+        console.log(driver.meetings[0].date);
+        console.log(driver.meetings[0].stime);
+        console.log(driver.meetings[0].etime);
     }
-    console.log("driver instantiated. *DBG");
-    return(true);
 }
-*/

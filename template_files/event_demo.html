@@ -45,7 +45,6 @@
 
 
                 console.log("Preparing to enter dupPersons(html:45)");
-                console.log(dupPersons());
 
                 if(!dupPersons())
                 {
@@ -60,9 +59,15 @@
                     this.knownPersons.push(person);
                     console.log(person.firstname + "Added to knownPersons[] *DBG");
                     this.numPersons++;
+                    this.meetings[this.numMeetings].attendees.push(person);
+                    this.numMeetings++;
                 }
-                this.meetings[this.numMeetings].attendees.push(person);
-                this.numMeetings++;
+                else
+                {
+                    this.meetings[this.numMeetings].attendees.push(person);
+                    this.numMeetings++;
+                }
+
 
                 var startHr = Number(stime.slice(0, 2));
                 var startMin = Number(stime.slice(3, 5));
@@ -73,6 +78,7 @@
                 var totalMins = deltaMin + (deltaHr * 60);
                 var numTimeslots = totalMins / 20;
 
+                return (true);
 
             }
         };
