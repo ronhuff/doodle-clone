@@ -82,21 +82,25 @@ function checkTime() // where time is HH:MM && time1 is begin, time2 is end
 //code another way to account for this for other cases.
 function dupPersons()
 {
-    console.log("entered dupPersons(data1.js:78)");
+    console.log("entered dupPersons(data1.js:85)");
     if(driver.numPersons == 0) return (false);
-    for(i = 0; i < driver.numPersons; i++)
+    else
     {
-        console.log(driver.knownPersons[i].firstname);
-        console.log(creator);
-        if(driver.knownPersons[i].firstname == creator)
+        for(i = 0; i < driver.numPersons; i++)
         {
-            console.log("Person already exists, not adding to knownPersons[] *DBG");
-            return(true);
-        }
-        else
-        {
-            console.log("New person does not exist, new person created.");
-            return (true);
+            console.log(driver.knownPersons[i].firstname);
+            console.log("Creator = " + creator + " data1.js:90 *DBG");
+            console.log("driver.knownPersons[i].firstname = " + driver.knownPersons[i].firstname);
+            if(driver.knownPersons[i].firstname == creator)
+            {
+                console.log("Person already exists, not adding to knownPersons[] *DBG");
+                return(true);
+            }
+            else
+            {
+                console.log("New person does not exist, new person created.");
+                return (false);
+            }
         }
     }
 }
