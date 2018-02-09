@@ -9,6 +9,10 @@
 
 //TODO: TIMESLOTS. Investigate exporting to CSV.
 // Global declarations, perhaps unnecessary.
+
+
+//NOTE!!!: readFromFile(string) && exportToSpread(object) are defined at bottom of page!!
+
 var meeting = {name:"", date:"", creator:"", stime:"HH:MM", etime:"HH:MM", timeSlots:[]};
 
 var data;
@@ -229,5 +233,6 @@ function readFromFile(string)
 //This function should be used in the html for some event such as window.onbeforeunload = exportToSpread(driver);//PSUEDOCODE!!
 function exportToSpread(object)
 {
-    return(JSON.stringify(object));
+    var stringToWrite = JSON.stringify(object);
+    return(stringToWrite);
 }
