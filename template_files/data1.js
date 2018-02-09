@@ -217,7 +217,17 @@ function tryCreate()
     }
 }
 
-function readFromFile()
+//readFromFile() takes a string from the file, passes it to JSON.parse()
+//this function be used in the html file e.g. driver = readFromFile(stringFromSpreadSheet) etc.
+function readFromFile(string)
 {
+    return(JSON.parse(string));
     //doStuff
+}
+
+//exportToSpread() takes the driver object, passes to JSON.stringify()
+//This function should be used in the html for some event such as window.onbeforeunload = exportToSpread(driver);//PSUEDOCODE!!
+function exportToSpread(object)
+{
+    return(JSON.stringify(object));
 }
