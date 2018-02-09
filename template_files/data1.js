@@ -1,5 +1,14 @@
-//TODO: TIMESLOTS. Investigate exporting to CSV.
+/*******************************************************************************
+    @author - Ron Huff
+    @file - data1.js
+    @lastModified - 2-9-2018
+    @brief - This file houses the code necessary to create, store and otherwise
+             manage meetings, persons & timeslots. As well as assure that all
+             constraints are met.
+*******************************************************************************/
 
+//TODO: TIMESLOTS. Investigate exporting to CSV.
+// Global declarations, perhaps unnecessary.
 var meeting = {name:"", date:"", creator:"", stime:"HH:MM", etime:"HH:MM", timeSlots:[]};
 
 var data;
@@ -9,21 +18,30 @@ var date = "";
 var stime = "";
 var etime = "";
 
-
-function exportData()
+// takes an object as parameter and returns a string which should then be written to file.
+// object should be the driver object from the html page.
+function exportData(object)
 {
-    console.log(driver.meetings.join(','));
-    console.log(driver.numMeetings);
-    console.log(driver.meetings[0].creator);
-    console.log(driver.meetings[0].name);
+    if(object.typeof == "object")
+    {
+        return(JSON.stringify);
+    }
+    else
+    {
+        console.log(object + " does not appear to be an object. data1.js:21 *DBG");
+        return(false);
+    }
 }
 
+//called when user clicks button.
+//populates data and attempts to create/store all necessary data.
 function eventSubmit()
 {
     populateData();
     tryCreate();
 }
 
+//takes data from the html and assigns it to variables JS can easier work with.
 function populateData()
 {
     data = document.forms["eventMaker"];
@@ -35,24 +53,27 @@ function populateData()
     etime = data["etime"].value;
 }
 
-
 //CREATION CONSTRAINTS
 function checkDate()
 {
     console.log("Entered CheckDate()");
     console.log(date);
     console.log(date.slice(5,7) + "/" + date.slice(8,10));
-    if(date.slice(5,7) == 01 && date.slice(8,10) == 01)
+
+    //New Year's Day.
+    if(date.slice(5,7) == "01" && date.slice(8,10) == "01")
     {
         alert("No meetings permitted to be scheduled on New Year's Day.");
         return (false);
     }
-    if(date.slice(5,7) == 07 && date.slice(8,10) == 04)
+    //Independence Day
+    if(date.slice(5,7) == "07" && date.slice(8,10) == "04")
     {
         alert("No meetings permitted to be scheduled on Independence Day.");
         return (false);
     }
-    if(date.slice(5,7) == 12 && date.slice(8,10) == 25)
+    //Christmas Day
+    if(date.slice(5,7) == "12" && date.slice(8,10) == "25")
     {
         alert("No meetings permitted to be scheduled on Christmas Day.");
         return (false);
@@ -67,27 +88,36 @@ function checkTime() // where time is HH:MM && time1 is begin, time2 is end
 
     console.log("Entered checkTime()");
     console.log(stime + " " + etime);
-    //this means they are attempting to request a time from the next day which is disallowed.
+
     var startHr = Number(stime.slice(0, 2));
     var startMin = Number(stime.slice(3, 5));
     var endHr = Number(etime.slice(0, 2));
     var endMin = Number(etime.slice(3, 5));
     console.log(startHr, startMin, endHr, endMin + " data1.js:74 *DBG");
 
-    //Check for midnight to 5 am
+    //Check for overnight
     if( (startHr >= "00" && startHr < "05") || (endHr > "00" && endHr <= "05") )
     {
         console.log("hour values indicate time must be between 12:00 am - 5:00 am");
         alert("Meetings may not occur between 12:00am - 5:00am");
         return(false);
     }
+    //Check for lunch.
     else if( (startHr >= "12" && startHr < "13") || ( ( endHr >= "12" && endMin > "00" ) && endHr <= "13"))
     {
         console.log("hour values indicate time requested must be between 12:00pm - 01:00pm");
         alert("Meetings may not occur between 12:00pm - 1:00pm");
         return(false);
     }
-
+    //Check if meeting would span the restricted overnight period.
+    else if( startHr >= "05" && endHr > "12")
+    {
+        console.log("Hour values indicate that the meetiung would go through lunch.");
+        alert("Meetings may not extend through lunch.");
+    }
+    //Check if meeting would span the restricted lunch period.
+    else if( startHr >= "13" && endHr >= "00")
+    //Check to assure that meeting will start and end on the same calendar day.
     if(etime < stime)
     {
         alert("Meeting may not extend into next calendar day.");
@@ -105,9 +135,10 @@ function checkTime() // where time is HH:MM && time1 is begin, time2 is end
 function dupPersons()
 {
     console.log("entered dupPersons(data1.js:85)");
+    //Check to make sure persons exist.
     if(driver.numPersons == 0) return (false);
     else
-    {
+    {   //loops through known persons. if creator's name matches a name in knownPersons then dupPersons() returns false. else true.
         for(i = 0; i < driver.numPersons; i++)
         {
             console.log(driver.knownPersons[i].firstname);
@@ -126,12 +157,17 @@ function dupPersons()
         }
     }
 }
+
+//Checks to see if the user is attempting to create a meeting that is already in existance.
 function dupMeet()
 {
     if(driver.numMeetings == 0) return (false);
     for(i = 0; i < driver.numMeetings; i++)
     {
-        if(driver.meetings[i].event_name == name && driver.meetings[i].date == date && driver.meetings[i].creator == creator)
+        //for these purposes I have defined a duplicate meeting to be one in
+        //which the meetings date, name and creator name are all equal.
+        if(driver.meetings[i].event_name == name && driver.meetings[i].date == date
+            && driver.meetings[i].creator == creator)
         {
             alert("This event has already been created!");
             console.log("Duplicat event detected *DBG");
@@ -145,6 +181,7 @@ function dupMeet()
     }
 }
 
+//tryCreate() will check for any constraints violations and then attempt to call driver.addMeeting()
 function tryCreate()
 {
     if(!checkDate())
@@ -169,7 +206,8 @@ function tryCreate()
         console.log("Attempting to call driver.addMeeting()");
         if(driver.addMeeting())
         {
-            console.log("Meeting " + driver.meetings[driver.numMeetings - 1].name + " has been created for " + driver.meetings[driver.numMeetings - 1].date);
+            console.log("Meeting " + driver.meetings[driver.numMeetings - 1].name +
+                        " has been created for " + driver.meetings[driver.numMeetings - 1].date);
         }
         //DEBUG Logs
         console.log(driver.meetings[0].name);
@@ -181,35 +219,5 @@ function tryCreate()
 
 function readFromFile()
 {
-    /*console.log(jQuery.get("dataStorage.txt"));
-    driver = JSON.stringify(data);
-    $.get('file_to_read.txt', function(data)
-    {
-        console.log(JSON.parse(data));
-    },
-    'text');*/
-    var txt = '';
-    var xmlhttp = new XMLHttpRequest();
-    console.log(xmlhttp);
-    xmlhttp.onreadystatechange = function()
-    {
-        if(xmlhttp.status == 200 && xmlhttp.readyState == 4)
-        {
-            txt = xmlhttp.responseText;
-        }
-    };
-    this.init = function()
-    {
-        xmlhttp.open("GET","/dataStorage.txt",true);
-        console.log(txt);
-    };
-
-    xmlhttp.send();
+    //doStuff
 }
-
-
-
-/*window.onload=function(){
- ajax('dataStorage.txt',alertTxt)
-}
-*/
