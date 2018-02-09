@@ -1,68 +1,100 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Create Event - Doodle Clone</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
+  </head>
+  <script src ="data1.js"></script>
+  <body>
     <h1>Welcome to the Event Creator Page!</h1>
     <p><a href="landing.html">Back to Landing Page</a></p>
-    <p><a href="setavail.html">View events and Set Availability</a></p>    <form>
-        <input type="text" name="admin" placeholder="Admin last name" maxlength="64" required=true type=string id="lName">
+    <p><a href="setavail.html">View events and Set Availability</a></p>
+    <script type="text/JavaScript">
+      var driver =
+      {
+          meetings    : [],
+          numMeetings : 0,
+          knownPersons: [],
+          numPersons  : 0,
+          addMeeting  : function()
+          {
+              var meeting =
+              {
+                   name:event_name,
+                   date:date,
+                   creator:creator,
+                   stime:stime,
+                   etime:etime,
+                   timeSlots:[],
+                   numTimeSlots:0,
+                   attendees:[],
+                   numAttend:1
+              };
+
+              var timeslot =
+              {
+                  tsStime:"12:00",
+                  tsEtime:"12:20",
+                  attendees:[],//if person is in this array, they are available for this timeslot in the meeting
+                  numAttendees:0
+              };
+
+              this.meetings.push(meeting);
+
+
+              console.log("Preparing to enter dupPersons(html:45)");
+              console.log(dupPersons());
+
+              if(!dupPersons())
+              {
+                  //creates a person for the driver's knownPersons array.
+                  var person =
+                  {
+                       firstname:creator,
+                       lastname:""
+                  };
+                  console.log("Attempting to log the person");
+                  console.log(person.firstname);
+                  this.knownPersons.push(person);
+                  console.log(person.firstname + "Added to knownPersons[] *DBG");
+                  this.numPersons++;
+              }
+              this.meetings[this.numMeetings].attendees.push(person);
+              this.numMeetings++;
+
+              var startHr = Number(stime.slice(0, 2));
+              var startMin = Number(stime.slice(3, 5));
+              var endHr = Number(stime.slice(0, 2));
+              var endMin = Number(stime.slice(3, 5));
+              var deltaHr = endHr - startHr;
+              var deltaMin = endMin - startMin;
+              var totalMins = deltaMin + (deltaHr * 60);
+              var numTimeslots = totalMins / 20;
+
+
+          }
+      };
+      //run updateData() method to populate driver object from file
+    </script>
+    <form onsubmit="eventSubmit();" name="eventMaker">
+        <input type="text" name="admin" placeholder="Admin Name" maxlength="64" required=true type=string id="lName">
         <br>
-        <input type="text" name="event_name" placeholder="Event name" maxlength="64" required=true type=string id="evName">
+        <input type="text" name="event" placeholder="Event name" maxlength="64" required=true type=string id="evName">
         <br>
         <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
         <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
              MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
-        <script>
-            function checkDate(date) // where date is MM/DD/YYYY
-            {
-                if(date.slice(0,2) == 01 && date.slice(3,5) == 01)
-                {
-                    alert("No meetings permitted to be scheduled on New Year's Day.")
-                    return (false)
-                }
-                if(date.slice(0,2) == 07 && date.slice(3,5) == 04)
-                {
-                    alert("No meetings permitted to be scheduled on Independence Day.")
-                    return (false)
-                }
-                if(date.slice(0,2) == 12 && date.slice(3,5) == 25)
-                {
-                    alert("No meetings permitted to be scheduled on Christmas Day.")
-                }
-                return (true)
-            }
-            var eventDate = document.getElementById("evDate")
-            //did some reading about this online, this may work?
-            //otherways perhaps just passing in date would work and I have just tried to use the code incorrectly.
-            //please advise. 2-2-18 ronhuff
-
-
-
-            if(checkDate(eventDate))
-            {
-                alert("Date looks good!")
-            }
-            else
-            {
-                alert("Invalid date!")
-            }
-        </script>
         <br>
         <label for="start_time">Choose Start Time: </label>
-        <input id="start_time" type="time" name="start_time">
+        <input id="stime" type="time" name="stime" placeholder="Start Time">
         <br>
-        <label for="end_time">Choose End Time: </label>
-        <input id="end_time" type="time" name="endt_time">
+        <label for="etime">Choose End Time: </label>
+        <input id="etime" type="time" name="etime" placeholder="End Time">
         <br>
-        <input type="button" name="submit_event" id="evSubmit" value="Submit" onclick="submitEvent()">
+        <button type="button" onclick="eventSubmit();console.log(driver.numMeetings);">Create Event</button>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="adder.js"></script>
-    <script src="submit.js"></script>
-</body>
+  </body>
 </html>
