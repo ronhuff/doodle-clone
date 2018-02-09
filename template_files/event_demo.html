@@ -41,8 +41,19 @@
                     numAttendees:0
                 };
 
-                this.meetings.push(meeting);
 
+                var startHr = Number(stime.slice(0, 2));
+                var startMin = Number(stime.slice(3, 5));
+                var endHr = Number(etime.slice(0, 2));
+                var endMin = Number(etime.slice(3, 5));
+                console.log(startHr, startMin, endHr, endMin);
+
+                meeting.totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
+                console.log(meeting.totalMins);
+                meeting.numTimeSlots = ( meeting.totalMins / 20 );
+                console.log("TimeSlots = " + meeting.numTimeSlots);
+
+                this.meetings.push(meeting);
 
                 console.log("Preparing to enter dupPersons(html:45)");
 
@@ -69,18 +80,11 @@
                 }
 
 
-                var startHr = Number(stime.slice(0, 2));
-                var startMin = Number(stime.slice(3, 5));
-                var endHr = Number(stime.slice(0, 2));
-                var endMin = Number(stime.slice(3, 5));
-                var deltaHr = endHr - startHr;
-                var deltaMin = endMin - startMin;
-                var totalMins = deltaMin + (deltaHr * 60);
-                var numTimeslots = totalMins / 20;
 
                 return (true);
 
             }
+
         };
         //run updateData() method to populate driver object from file
     </script>

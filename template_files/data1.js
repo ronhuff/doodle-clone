@@ -102,6 +102,7 @@ function dupPersons()
 }
 function dupMeet()
 {
+    if(driver.numMeetings == 0) return (false);
     for(i = 0; i < driver.numMeetings; i++)
     {
         if(driver.meetings[i].event_name == name && driver.meetings[i].date == date && driver.meetings[i].creator == creator)
