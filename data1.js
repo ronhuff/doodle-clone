@@ -22,7 +22,14 @@ function eventSubmit()
     tryCreate();
     console.log(event_duration(stime,etime));
     tableCreate();
-    //data_table();
+    var filepath = "C:\Users\diego\Documents\EECS\Spring_18\448\Projects\Project1\doodle-clone\test.txt";
+    var output = "It worked!"
+    writeTextFile(filepath, output);
+    /*var member = stime;
+    var last2 = member.slice(-2);
+    var first2 = member.slice(0,2);
+    alert(last2)
+    alert(first2)*/
 }
 
 function populateData()
@@ -198,11 +205,6 @@ function myFunction(input) {
   }
 
   function tableCreate() {
-      var start_time = stime.split(":");
-      var start_date = new Date(0,0,0,start_time[0],start_time[1]);
-      var newtime = start_date;
-      var pasttime = start_date;
-      var count = event_duration(stime, etime);
       var body = document.getElementsByTagName('body')[0];
       var tbl = document.createElement('table');
       tbl.style.width = '100%';
@@ -215,42 +217,36 @@ function myFunction(input) {
               {
                   var td = document.createElement('td');
                   td.appendChild(document.createTextNode("Event Name"))
-                  i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
                   tr.appendChild(td)
               }
               else if (i === 0 && j === 1)
               {
                   var td = document.createElement('td');
                   td.appendChild(document.createTextNode("Start Time"))
-                  i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
                   tr.appendChild(td)
               }
               else if (i === 0 && j === 2)
               {
                 var td = document.createElement('td');
                 td.appendChild(document.createTextNode("End Time"))
-                i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
                 tr.appendChild(td)
               }
               else if  (i === 1 && j === 0)
               {
                 var td = document.createElement('td');
                 td.appendChild(document.createTextNode(event_name))
-                i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
                 tr.appendChild(td)
               }
               else if (i === 1 && j === 1)
               {
                 var td = document.createElement('td');
                 td.appendChild(document.createTextNode(stime))
-                i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
                 tr.appendChild(td)
               }
               else
               {
                 var td = document.createElement('td');
                 td.appendChild(document.createTextNode(etime))
-                i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
                 tr.appendChild(td)
               }
           }
@@ -259,29 +255,9 @@ function myFunction(input) {
       tbl.appendChild(tbdy);
       body.appendChild(tbl)
   }
-/*function data_table() {
-  var body = document.getElementsByTagName("body")[0];
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
-  var start_time = stime.split(":");
-  var start_date = new Date(0,0,0,start_time[0],start_time[1]);
-  var newtime = start_date;
-  var minutes = 0;
-  for(var i = 0; i < 1 ; i++)
-  {
-    var row = document.createElement("tr");
-    for(var j =0; j <= event_duration(stime,etime); j++)
-    {
-      var cell = document.createElement("td");
-      minutes = newtime.getMinutes();
-      newtime = newtime.setMinutes(minutes + 20)
-      var cellText = document.createTextNode(newtime);
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-    tblBody.appendChild(row);
-  }
-  tbl.appendChild(tblBody);
-  body.append(tbl);
-  tbl.setAttribute("border", "2");
-}*/
+  function writeTextFile(filepath, output) {
+	var txtFile = new File(filepath);
+	txtFile.open("w"); //
+	txtFile.writeln(output);
+	txtFile.close();
+}
