@@ -97,6 +97,12 @@ function checkTime() // where time is HH:MM && time1 is begin, time2 is end
     var startMin = Number(stime.slice(3, 5));
     var endHr = Number(etime.slice(0, 2));
     var endMin = Number(etime.slice(3, 5));
+    if( (( startMin % 20 == 0 ) && ( endMin % 20 == 0 )) == false )
+    {
+        alert("Meeting must begin and end on the hour or 20 minute increments thereof.");
+        console.log("startMin || endMin not on timeslot");
+        return(false);
+    }
     console.log(startHr, startMin, endHr, endMin + " data1.js:74 *DBG");
 
     //Check for overnight
