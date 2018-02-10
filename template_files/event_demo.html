@@ -1,25 +1,146 @@
+<!--
+    @author - Ron Huff
+    @contributor - Kyle Berkley
+    @file - event_demo.html
+    @lastModified - 2-9-2018
+    @brief - This file houses the html to create a page for testing and informal
+             demonstration purposes. Kyle Berkley created the base HTML framework
+             and I integrated it with data1.js as well as added additional JS.
+------------------------------------------------------------------------------->
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Time Data Template</title>
   </head>
+  <script src="data1.js"></script>
+  <script src="require.js"></script>
   <body>
-    <h1>Data Template:</h1>
-    <!-- This is a simple html file and I can run you through the basics of everything here later -->
 
-    <!-- The "return runChecks()" on line 12 runs your JavaScript tests when you submit code-->
-    <!-- For now, just know that between here ... -->
-    <form onsubmit="return runChecks()" name="eventMaker">
+    <h1>Testing:</h1>
+        <!-- <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+    <script>
+    //console.log($contents);
+    </script>
+    <script type="text/GoogleScript" src="spreadScript.gs"></script>
+    <script>
+    // TODO: Code something here to update the driver object or even set it equal to a new object.
+
+        //inDriver will eventually be changed so that it is uninstantiated by default.
+        //when the code runs to check the text file, if it is not empty, it will
+        //parse the JSON string from the file and set driver = thatObject.
+        //The intention is that if it is null then the driver will have it's first creation here.
+        //Otherwise then driver is set = to thatObject, we should have a driver object
+        //with good data.
+
+        var inputFile = "dataStorage.txt";
+        var inDriver = 1;
+        if(inDriver != null) // If inDriver is null it will create the first driver. else it will assign driver to JSON.parse() return value(object)
+        {
+            var driver =
+            {
+                meetings    : [],
+                numMeetings : 0,
+                knownPersons: [],
+                numPersons  : 0,
+                addMeeting  : function()
+                {
+                    var meeting =
+                    {
+                         name:event_name,
+                         date:date,
+                         creator:creator,
+                         stime:stime,
+                         etime:etime,
+                         timeSlots:[],
+                         numTimeSlots:0,
+                         attendees:[],
+                         numAttend:1
+                    };
+
+                    var timeslot =
+                    {
+                        tsStime:"12:00",//these are default values for templating purposes and may not be necessary.
+                        tsEtime:"12:20",
+                        attendees:[],//if person is in this array, they are available for this timeslot in the meeting
+                        numAttendees:0
+                    };
+
+                    //These variables enable more robust time checking.
+                    //They may add more clutter but for now they shall remain.
+
+                    var startHr = Number(stime.slice(0, 2));
+                    var startMin = Number(stime.slice(3, 5));
+                    var endHr = Number(etime.slice(0, 2));
+                    var endMin = Number(etime.slice(3, 5));
+                    console.log(startHr, startMin, endHr, endMin);
+
+                    meeting.totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
+                    console.log(meeting.totalMins);
+
+                    meeting.numTimeSlots = ( meeting.totalMins / 20 );
+                    console.log("TimeSlots = " + meeting.numTimeSlots);
+
+                    //TODO: see if this would be a good place to ensure meeting
+                    //      attendees as well as timeslot attendees are populated.
+                    //      perhaps not all can be poplated here but at LEAST the creator.
+
+                    this.meetings.push(meeting);
+
+                    console.log("Preparing to enter dupPersons(html:58) *DBG");
+
+                    //This block ensures that we cannot have any duplicate persons.
+
+                    if(!dupPersons())
+                    {
+                        //creates a person for the driver's knownPersons array.
+                        var person =
+                        {
+                             firstname:creator,
+                             lastname:""
+                        };
+
+                        console.log("Attempting to log the person");
+                        console.log(person.firstname);
+                        this.knownPersons.push(person);
+
+                        console.log(person.firstname + "Added to knownPersons[] *DBG");
+                        this.numPersons++;
+                        this.meetings[this.numMeetings].attendees.push(person);
+                        //TODO:Perhaps this would be a good place to increment numattend.
+                        //Remember to implement this elsewhere as well.
+                        this.numMeetings++;
+                    }
+                    else
+                    {
+                        this.meetings[this.numMeetings].attendees.push(person);
+                        this.numMeetings++;
+                    }
+                    return (true);
+                }
+            }
+        }
+        else//once inFiling functionality is complete, inDriver should be either null
+            //OR it should be = to JSON.parse(driverString).
+            //This block executes if inDriver was null and will then set it to
+            //the driver object we got from the file.
+        {
+            var driver = inDriver;
+        }
+    </script>
+
+    <form onsubmit="eventSubmit();" name="eventMaker">
       <input type="text" name="admin" placeholder="Admin Name">
       <input type="text" name="event" placeholder="Event Name">
       <input type="date" name="date">
       <input type="time" name="stime" placeholder="Start Time">
       <input type="time" name="etime" placeholder="End Time">
       <br>
-      <input type="submit">
-    </form>
-    <!-- ... and here, is the code that receives data from the user and hands it to the Javascript file -->
+      <button type="button" onclick="eventSubmit();console.log(driver.numMeetings);">Create Event</button>
 
-    <script src="data.js"></script>
+      <!--<input type="submit" action=""> action specifies destination.-->
+    </form>
+
   </body>
 </html>
