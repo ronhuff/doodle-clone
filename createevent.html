@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Create Event - Doodle Clone</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <h1>Welcome to the Event Creator Page!</h1>
-    <p><a href="landing.html">Back to Landing Page</a></p>
-    <p><a href="setavail.html">View events and Set Availability</a></p>    <form>
+  </head>
+  <body>
+
+    <div class="menu">
+        <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
+        <div id="dropdown" class="dd-items">
+            <a href="landing.html">Landing PAge</a>
+            <a href="setavail.html">Set Availability</a>
+        </div>
+    </div>
+    <div class="header">
+      <h1>Create an Event!</h1>
+    </div>
+
+    <form>
         <input type="text" name="admin" placeholder="Admin last name" maxlength="64" required=true type=string id="lName">
         <br>
         <input type="text" name="event_name" placeholder="Event name" maxlength="64" required=true type=string id="evName">
@@ -51,11 +61,11 @@
                 alert("Invalid date!")
             }
         </script>
-        <br>
-        <input type="submit">
+      <br>
+      <input type="submit">
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="adder.js"></script>
-</body>
+    <script src="functions.js"></script>
+  </body>
 </html>

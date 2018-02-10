@@ -1,27 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Set Availability - Doodle Clone</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <h1 >Welcome to the event availability page!</h1>
-    <p><a href="landing.html">Back to Landing Page</a></p>
-    <p><a href="createevent.html">Create an event</a></p>
+  </head>
+  <body>
 
-    <div class="Event_list">
-      <div>This totally works</div>
+    <div class="menu">
+        <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
+        <div id="dropdown" class="dd-items">
+            <a href="landing.html">Landing Page</a>
+            <a href="createevent.html">Create Event</a>
+        </div>
     </div>
-    
-    <!-- <div style="display: inline-block"> -->
-      <iframe src="https://calendar.google.com/calendar/embed?showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=1&amp;bgcolor=%239999ff&amp;src=tkraimla8jsnpqonb113hlnaqk%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FChicago" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-    <!-- </div> -->
-            <!-- Events should go here -->
+    <div class="header">
+      <h1>Please Set Your Availability!</h1>
+    </div>
+    <div class="button_container">
+      <button onclick="change_to_24hours" class="dropmenu">Switch Time Mode</button>
+    </div>
 
+    <br>
+    <div class="Event_list">
+      <div class="event"></div>
+      <div class="event"></div>
+      <div class="event"></div>
+      <div class="event"></div>
+    </div>
 
+    <span class="availability">
+        <button class="time">5:00</button><button class="time">5:20</button><button class="time">5:40</button> <!-- <br> -->
+        <button class="time">6:00</button><button class="time">6:20</button><button class="time">6:40</button> <br>
+        <button class="time">7:00</button><button class="time">7:20</button><button class="time">7:40</button> <!-- <br> -->
+        <button class="time">8:00</button><button class="time">8:20</button><button class="time">8:40</button> <br>
+        <button class="time">9:00</button><button class="time">9:20</button><button class="time">9:40</button> <!-- <br> -->
+        <button class="time">10:00</button><button class="time">10:20</button><button class="time">10:40</button> <br>
+        <button class="time">11:00</button><button class="time">11:20</button><button class="time">11:40</button> <!-- <br> -->
+        <button class="time">12:00</button><button class="time">12:20</button><button class="time">12:40</button> <br>
+        <button class="time">13:00</button><button class="time">13:20</button><button class="time">13:40</button> <!-- <br> -->
+        <button class="time">14:00</button><button class="time">14:20</button><button class="time">14:40</button> <br>
+        <button class="time">15:00</button><button class="time">15:20</button><button class="time">15:40</button> <!-- <br> -->
+        <button class="time">16:00</button><button class="time">16:20</button><button class="time">16:40</button> <br>
+        <button class="time">17:00</button><button class="time">17:20</button><button class="time">17:40</button> <!-- <br> -->
+        <button class="time">18:00</button><button class="time">18:20</button><button class="time">18:40</button> <br>
+        <button class="time">19:00</button><button class="time">19:20</button><button class="time">19:40</button> <!-- <br> -->
+        <button class="time">20:00</button><button class="time">20:20</button><button class="time">20:40</button> <br>
+        <button class="time">21:00</button><button class="time">21:20</button><button class="time">21:40</button> <!-- <br> -->
+        <button class="time">22:00</button><button class="time">22:20</button><button class="time">22:40</button> <br>
+        <button class="time">23:00</button><button class="time">23:20</button><button class="time">23:40</button> <!-- <br> -->
+        <div >
+          <form onsubmit="someFunction();" name="Availability">
+            <input type="text" placeholder="Attendee's Name">
+            <button type="button" onclick="someCheckingFunction()">Submit Availability</button>
+          </form>
+        </div>
+    </span>
+
+    <!-- <div>
+      <form onsubmit="someFunction();" name="Availability">
+        <input type="text" placeholder="Attendee's Name">
+        <br>
+        <button type="button" onclick="someCheckingFunction()">Submit Availability</button>
+      </form>
+    </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="functions.js"></script>
 </body>
 </html>

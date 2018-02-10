@@ -24,7 +24,9 @@ p {
 }
 
 #credits {
-  margin-top: 80px;
+  margin: 80px 20px;
+  float: right;
+  text-align: right;
   border-radius: 5px;
   max-width: 150px;
   color: white;
@@ -47,15 +49,35 @@ p {
     border-radius: 5px;
 }
 
-iframe {
-  float: right;
+.Event_list {
+  /*width: 50%;*/
+  max-width: 800px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event {
+  width: 600px;
+  height: 50px;
+  background-color: rgba(200, 250, 210, .5);
+  border: solid black 2px;
+  border-radius: 6px;
+  margin: 5px 20px;
+}
+
+.availability {
+  vertical-align: top;
+  /*width: 50%;*/
+  text-align: center;
   display: inline-block;
 }
 
-.Event_list {
-  width: 50%;
-  text-align: center
-  display: inline-block;
+.time {
+  width: 80px;
+  background-color: rgba(200, 210, 250, .9);
+  margin: 5px 5px;
+  border-radius: 3px;
 }
 
 .dropmenu:hover, .dropmenu:focus {
@@ -65,6 +87,12 @@ iframe {
 .menu {
     position: relative;
     display: inline-block;
+}
+
+.button_container {
+  position: relative;
+  display: inline-block;
+  float: right;
 }
 
 .dd-items {
