@@ -18,22 +18,111 @@
       <h1>Create an Event!</h1>
     </div>
 
-    <form>
-        <input type="text" name="admin" placeholder="Admin last name" maxlength="64" required=true type=string id="lName">
-        <br>
+    <form name = "eventMaker">
         <input type="text" name="event_name" placeholder="Event name" maxlength="64" required=true type=string id="evName">
+        <br><br>
+        <input type="text" name="admin" placeholder="Creator last name" maxlength="64" required=true type=string id="lName">
         <br>
         <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
         <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
              MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
+         <input type="time" name="stime" placeholder="Start Time">
+         <input type="time" name="etime" placeholder="End Time">
+
         <script>
-            
+
         </script>
       <br>
       <button type="button" onclick="eventSubmit();console.log(driver.numMeetings);">Create Event</button>
     </form>
+    <script src="template_files/data1.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="functions.js"></script>
+
+    <script type="text/javascript">
+    var driver =
+    {
+        meetings    : [],
+        numMeetings : 0,
+        knownPersons: [],
+        numPersons  : 0,
+        addMeeting  : function()
+        {
+            var meeting =
+            {
+                 name:event_name,
+                 date:date,
+                 creator:creator,
+                 stime:stime,
+                 etime:etime,
+                 timeSlots:[],
+                 numTimeSlots:0,
+                 attendees:[],
+                 numAttend:1
+            };
+
+            var timeslot =
+            {
+                tsStime:"12:00",//these are default values for templating purposes and may not be necessary.
+                tsEtime:"12:20",
+                attendees:[],//if person is in this array, they are available for this timeslot in the meeting
+                numAttendees:0
+            };
+
+            //These variables enable more robust time checking.
+            //They may add more clutter but for now they shall remain.
+
+            var startHr = Number(stime.slice(0, 2));
+            var startMin = Number(stime.slice(3, 5));
+            var endHr = Number(etime.slice(0, 2));
+            var endMin = Number(etime.slice(3, 5));
+            console.log(startHr, startMin, endHr, endMin);
+
+            meeting.totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
+            console.log(meeting.totalMins);
+
+            meeting.numTimeSlots = ( meeting.totalMins / 20 );
+            console.log("TimeSlots = " + meeting.numTimeSlots);
+
+            //TODO: see if this would be a good place to ensure meeting
+            //      attendees as well as timeslot attendees are populated.
+            //      perhaps not all can be poplated here but at LEAST the creator.
+
+            this.meetings.push(meeting);
+
+            console.log("Preparing to enter dupPersons(html:58) *DBG");
+
+            //This block ensures that we cannot have any duplicate persons.
+
+            if(!dupPersons())
+            {
+                //creates a person for the driver's knownPersons array.
+                var person =
+                {
+                     firstname:creator,
+                     lastname:""
+                };
+
+                console.log("Attempting to log the person");
+                console.log(person.firstname);
+                this.knownPersons.push(person);
+
+                console.log(person.firstname + "Added to knownPersons[] *DBG");
+                this.numPersons++;
+                this.meetings[this.numMeetings].attendees.push(person);
+                //TODO:Perhaps this would be a good place to increment numattend.
+                //Remember to implement this elsewhere as well.
+                this.numMeetings++;
+            }
+            else
+            {
+                this.meetings[this.numMeetings].attendees.push(person);
+                this.numMeetings++;
+            }
+            return (true);
+        }
+    }
+    </script>
   </body>
 </html>

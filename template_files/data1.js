@@ -51,7 +51,7 @@ function populateData()
     data = document.forms["eventMaker"];
 
     creator = data["admin"].value;
-    event_name = data["event"].value;
+    event_name = data["event_name"].value;
     date = data["date"].value;
     stime = data["stime"].value;
     etime = data["etime"].value;
