@@ -89,7 +89,8 @@ function eventSubmit()
 
     driver.meetings[driver.numMeetings - 1].stime = meeting.stime;
     driver.meetings[driver.numMeetings - 1].etime = meeting.etime;
-    createTimeslots(driver.meetings[driver.numMeetings]);
+    console.log(driver.meetings[driver.numMeetings]);
+    createTimeslots(driver.meetings[driver.numMeetings - 1]);
 }
 
 //takes data from the html and assigns it to variables JS can easier work with.
@@ -278,7 +279,7 @@ function tryCreate()
         console.log("Attempting to call driver.addMeeting()");
         if(driver.addMeeting())
         {
-            logMeetingToConsole();
+            //logMeetingToConsole();
             return(true);
         }
         console.log("Unknown Error: driver.addMeetings() must have returned false");
@@ -309,28 +310,62 @@ function exportToSpread(object)
 
 function createTimeslots(meeting)
 {
+    console.log("Entered timeslots creation data1.js:312");
+    console.log(meeting);
     console.log(meeting.etime);
-    var startHr = Number(meeting.stime.slice(0, 2));
-    var startMin = Number(meeting.stime.slice(3, 5));
+    var t1 = Number(meeting.stime.slice(0, 2));
+    var t2 = Number(meeting.stime.slice(3, 5));
     var endHr = Number(meeting.etime.slice(0, 2));
     var endMin = Number(meeting.etime.slice(3, 5));
     //console.log(startHr, startMin, endHr, endMin);
-    console.log(startHr);
-    var totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
+
+    var totalMins = (((endHr - t1) * 60) + (endMin - t2));
 
     meeting.numTimeSlots = ( totalMins / 20 );
+    for(i = 0; i < meeting.numTimeSlots; i++)
+    {
+        if(t2 == 0)
+        {
+            t2 = "00";
+        }
+        var timeslot =
+        {
+            stime:String(t1) + ':' + String(t2),//these are default values for templating purposes and may not be necessary.
+            etime:"",
+            attendees:[],//if person is in this array, they are available for this timeslot in the meeting
+            numAttendees:1
+        };
+
+        t2 = Number(t2) + 20;
+        if(t2 >= 60)
+        {
+            t2 = 0;
+            t1++;
+            timeslot.etime = String(t1) + ':' + "00";
+            timeslot.endHr = t1;
+            timeslot.endMin = t2;
+        }
+        else
+        {
+            timeslot.etime = String(t1) + ':' + String(t2);
+            timeslot.endHr = t1;
+            timeslot.endMin = t2;
+        }
+        timeslot.attendees.push(meeting.attendees[0]);//since this is at creation we can take index 0(the creator)
+        if(timeslot.startMin == "00") timeslot.startMin = 0;
+        meeting.timeSlots.push(timeslot);
+    }
 }
 
-function logMeetingToConsole()
+function logMeetingToConsole(meeting)
 {
     var index = (driver.numMeetings - 1);
-
-    console.log(driver.meetings[index].attendees[0].lastname + " is an attendee of meeting " + meeting.name + " on " + meeting.date + ". It's " + driver.meetings[index].attendees[0].isAttendee + " driver.js:72 *DBG");
-    console.log("Meeting " + driver.meetings[index].name +
-                " has been created for " + driver.meetings[index].date
-                + "beginning at " + driver.meetings[index].stime +
-                " and ending at " + driver.meetings[index].etime);
-    console.log("This meeting ought to have" + driver.meetings[index].numTimeSlots + " timeslots. data1.js:335");
+    console.log(meeting.attendees[0].lastname + " is an attendee of meeting " + meeting.name + " on " + meeting.date + ". It's " + meeting.attendees[0].isAttendee + " driver.js:72 *DBG");
+    console.log("Meeting " + meeting.name +
+                " has been created for " + meeting.date
+                + "beginning at " + meeting.stime +
+                " and ending at " + meeting.etime);
+    console.log("This meeting ought to have" + meeting.numTimeSlots + " timeslots. data1.js:335");
 
 }
 //this function should only run if the person object passed in has property .isAttendee: true
