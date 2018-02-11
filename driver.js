@@ -113,6 +113,7 @@ var driver =
         }
 
         this.numMeetings++;
+        alert("Meeting successfully created!");
         return (true);
     }
 };

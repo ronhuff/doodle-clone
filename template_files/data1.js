@@ -192,7 +192,7 @@ function dupMeet()
             && driver.meetings[i].creator == creator)
         {
             alert("This event has already been created!");
-            console.log("Duplicat event detected *DBG");
+            console.log("Duplicate event detected *DBG");
             return(true);
         }
         else
@@ -208,19 +208,16 @@ function tryCreate()
 {
     if(!checkDate())
     {
-        alert("Please fix date error(s) and resubmit.");
         console.log("Date constraints failed *DBG");
         return (false);
     }
     else if(!checkTime())
     {
-        alert("Please fix timer error(s) and resubmit.");
         console.log("Time constraints failed *DBG");
         return (false);
     }
     else if(dupMeet())
     {
-        alert("Meeting already exists, unable to create duplicate.");
         console.log("Event not created.");
     }
     else
