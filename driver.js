@@ -32,15 +32,17 @@ var driver =
         //These variables enable more robust time checking.
         //They may add more clutter but for now they shall remain.
 
+        console.log(meeting.etime);
         var startHr = Number(stime.slice(0, 2));
         var startMin = Number(stime.slice(3, 5));
         var endHr = Number(etime.slice(0, 2));
         var endMin = Number(etime.slice(3, 5));
+        /*
         //console.log(startHr, startMin, endHr, endMin);
-
+        console.log(startHr);
         meeting.totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
 
-        meeting.numTimeSlots = ( meeting.totalMins / 20 );
+        meeting.numTimeSlots = ( meeting.totalMins / 20 );*/
         //console.log("TimeSlots = " + meeting.numTimeSlots);
 
         //TODO: see if this would be a good place to ensure meeting
@@ -113,8 +115,11 @@ var driver =
         }
         console.log(this.numMeetings);
         console.log(this.meetings);
+        this.meetings[this.numMeetings].stime = meeting.stime;
+        this.meetings[this.numMeetings].etime = meeting.etime;
         console.log(this.meetings[this.numMeetings].stime);
         console.log(this.meetings[this.numMeetings].etime);
+
         this.numMeetings++;
         alert("Meeting successfully created!");
         return (true);

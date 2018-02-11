@@ -86,6 +86,10 @@ function eventSubmit()
 {
     //console.log(populateData() == true);
     if(populateData()) tryCreate();
+
+    driver.meetings[driver.numMeetings - 1].stime = meeting.stime;
+    driver.meetings[driver.numMeetings - 1].etime = meeting.etime;
+    createTimeslots(driver.meetings[driver.numMeetings]);
 }
 
 //takes data from the html and assigns it to variables JS can easier work with.
@@ -274,10 +278,7 @@ function tryCreate()
         console.log("Attempting to call driver.addMeeting()");
         if(driver.addMeeting())
         {
-            console.log("Meeting " + driver.meetings[driver.numMeetings - 1].name +
-                        " has been created for " + driver.meetings[driver.numMeetings - 1].date
-                        + "beginning at " + driver.meetings[driver.numMeetings - 1].stime +
-                        " and ending at " + driver.meetings[driver.numMeetings - 1].etime);
+            logMeetingToConsole();
             return(true);
         }
         console.log("Unknown Error: driver.addMeetings() must have returned false");
@@ -306,6 +307,32 @@ function exportToSpread(object)
     return(stringToWrite);
 }
 
+function createTimeslots(meeting)
+{
+    console.log(meeting.etime);
+    var startHr = Number(meeting.stime.slice(0, 2));
+    var startMin = Number(meeting.stime.slice(3, 5));
+    var endHr = Number(meeting.etime.slice(0, 2));
+    var endMin = Number(meeting.etime.slice(3, 5));
+    //console.log(startHr, startMin, endHr, endMin);
+    console.log(startHr);
+    var totalMins = (((endHr - startHr) * 60) + (endMin - startMin));
+
+    meeting.numTimeSlots = ( totalMins / 20 );
+}
+
+function logMeetingToConsole()
+{
+    var index = (driver.numMeetings - 1);
+
+    console.log(driver.meetings[index].attendees[0].lastname + " is an attendee of meeting " + meeting.name + " on " + meeting.date + ". It's " + driver.meetings[index].attendees[0].isAttendee + " driver.js:72 *DBG");
+    console.log("Meeting " + driver.meetings[index].name +
+                " has been created for " + driver.meetings[index].date
+                + "beginning at " + driver.meetings[index].stime +
+                " and ending at " + driver.meetings[index].etime);
+    console.log("This meeting ought to have" + driver.meetings[index].numTimeSlots + " timeslots. data1.js:335");
+
+}
 //this function should only run if the person object passed in has property .isAttendee: true
 //paramater may have to be this?? depends on the calling situation.
 //Meeting CAN be some useless variable if necessary(e.g. false) however, it can also be a meeting object.
