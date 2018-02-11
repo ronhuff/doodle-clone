@@ -38,6 +38,22 @@ function exportData(object)
     }
 }
 
+//setTimes() will set appropriate stime and etime.
+function setTimes(buttonid)
+{
+    data = document.buttons[buttonid];
+
+    //All these values are strings at this point.
+    creator = data["admin"].value;
+    event_name = data["event_name"].value;
+    date = data["date"].value;
+    stime = data["stime"].value;
+    etime = data["etime"].value;
+
+    if(stime == "") stime = newTime;
+    else etime = newTime;
+}
+
 //called when user clicks button.
 //populates data and attempts to create/store all necessary data.
 function eventSubmit()
