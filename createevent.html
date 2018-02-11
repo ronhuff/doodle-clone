@@ -5,99 +5,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <script>
-    function storeData(){
-      localStorage.setItem("objectString", JSON.stringify(events));
-    }
-    function gettingData(){
-      if(localStorage.getItem("objectString") !== null){
-          var stringObj = localStorage.getItem("objectString");
-          var lastObj = JSON.parse(stringObj)
-          events = lastObj;
-          console.log(lastObj);
-          //
-      }
-      else {
-      }
-    }
-  </script>
-  <script type="text/JavaScript">
-    var events = {
-      arrayOfEvents: [],
-      numOfEvents: 0
-    };
-    /*var driver =
-    {
-        meetings    : [],
-        numMeetings : 0,
-        knownPersons: [],
-        numPersons  : 0
-    }
-        prototype.addMeeting : function() THIS IS THE PROBLEM YOU CANNOT DEFINE A FUCNTION IN A OBJECT LIKE THIS CUZ WHEN YOU MAKE THE OBJECT IT GOES AWAY
-        {
-            var meeting =
-            {
-                 name:event_name,
-                 date:date,
-                 creator:creator,
-                 stime:stime,
-                 etime:etime,
-                 timeSlots:[],
-                 numTimeSlots:0,
-                 attendees:[],
-                 numAttend:1
-            };
-
-            var timeslot =
-            {
-                tsStime:"12:00",
-                tsEtime:"12:20",
-                attendees:[],//if person is in this array, they are available for this timeslot in the meeting
-                numAttendees:0
-            };
-
-            this.meetings.push(meeting);
-
-
-            console.log("Preparing to enter dupPersons(html:45)");
-            console.log(dupPersons());
-
-            if(!dupPersons())
-            {
-                //creates a person for the driver's knownPersons array.
-                var person =
-                {
-                     firstname:creator,
-                     lastname:""
-                };
-                console.log("Attempting to log the person");
-                console.log(person.firstname);
-                this.knownPersons.push(person);
-                console.log(person.firstname + "Added to knownPersons[] *DBG");
-                this.numPersons++;
-            }
-            this.meetings[this.numMeetings].attendees.push(person);
-            this.numMeetings++;
-
-            var startHr = Number(stime.slice(0, 2));
-            var startMin = Number(stime.slice(3, 5));
-            var endHr = Number(stime.slice(0, 2));
-            var endMin = Number(stime.slice(3, 5));
-            var deltaHr = endHr - startHr;
-            var deltaMin = endMin - startMin;
-            var totalMins = deltaMin + (deltaHr * 60);
-            var numTimeslots = totalMins / 20;
-
-
-        }
-    };*/
-    //run updateData() method to populate driver object from file
-  </script>
   <script src ="newDataFile.js"></script>
   <body onload="gettingData()">
     <h1>Welcome to the Event Creator Page!</h1>
     <p>
-      <a href="landing.html">
+      <a href="index.html">
         <input type="button" onclick="storeData()" value="Back to Landing Page"/>
       </a>
     </p>
