@@ -5,56 +5,58 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body>
+  <body onload="gettingData()">
 
-    <div class="menu">
-        <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
-        <div id="dropdown" class="dd-items">
-            <a href="index.html">Landing Page</a>
-            <a href="createevent.html">Create Event</a>
-        </div>
-    </div>
     <div class="header">
+      <span class="nav menu">
+          <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
+          <div id="dropdown" class="dd-items">
+              <a href="index.html">Landing Page</a>
+              <a href="createevent.html">Create Event</a>
+          </div>
+      </span>
+      <span class="nav button_container">
+        <button onclick="change_to_24hours" class="dropmenu">Switch Time Mode</button>
+      </span>
       <h1>Please Set Your Availability!</h1>
-    </div>
-    <div class="button_container">
-      <button onclick="change_to_24hours" class="dropmenu">Switch Time Mode</button>
     </div>
 
     <br>
     <div class="Event_list">
+
+
+      <!-- <div class="event"></div>
       <div class="event"></div>
       <div class="event"></div>
-      <div class="event"></div>
-      <div class="event"></div>
+      <div class="event"></div> -->
     </div>
 
     <span class="availability">
-        <button class="time">5:00</button><button class="time">5:20</button><button class="time">5:40</button> <!-- <br> -->
-        <button class="time">6:00</button><button class="time">6:20</button><button class="time">6:40</button> <br>
-        <button class="time">7:00</button><button class="time">7:20</button><button class="time">7:40</button> <!-- <br> -->
-        <button class="time">8:00</button><button class="time">8:20</button><button class="time">8:40</button> <br>
-        <button class="time">9:00</button><button class="time">9:20</button><button class="time">9:40</button> <!-- <br> -->
-        <button class="time">10:00</button><button class="time">10:20</button><button class="time">10:40</button> <br>
-        <button class="time">11:00</button><button class="time">11:20</button><button class="time">11:40</button> <!-- <br> -->
-        <button class="time">12:00</button><button class="time">12:20</button><button class="time">12:40</button> <br>
-        <button class="time">13:00</button><button class="time">13:20</button><button class="time">13:40</button> <!-- <br> -->
-        <button class="time">14:00</button><button class="time">14:20</button><button class="time">14:40</button> <br>
-        <button class="time">15:00</button><button class="time">15:20</button><button class="time">15:40</button> <!-- <br> -->
-        <button class="time">16:00</button><button class="time">16:20</button><button class="time">16:40</button> <br>
-        <button class="time">17:00</button><button class="time">17:20</button><button class="time">17:40</button> <!-- <br> -->
-        <button class="time">18:00</button><button class="time">18:20</button><button class="time">18:40</button> <br>
-        <button class="time">19:00</button><button class="time">19:20</button><button class="time">19:40</button> <!-- <br> -->
-        <button class="time">20:00</button><button class="time">20:20</button><button class="time">20:40</button> <br>
-        <button class="time">21:00</button><button class="time">21:20</button><button class="time">21:40</button> <!-- <br> -->
-        <button class="time">22:00</button><button class="time">22:20</button><button class="time">22:40</button> <br>
-        <button class="time">23:00</button><button class="time">23:20</button><button class="time">23:40</button> <!-- <br> -->
-        <div >
-          <form onsubmit="someFunction();" name="Availability">
-            <input type="text" placeholder="Attendee's Name">
-            <button type="button" onclick="someCheckingFunction()">Submit Availability</button>
-          </form>
-        </div>
+      <button id="5_0" class="time">5:00</button><button id="5_2" class="time">5:20</button><button id="5_4" class="time">5:40</button> <!-- <br> -->
+      <button id="6_0" class="time">6:00</button><button id="6_2" class="time">6:20</button><button id="6_4" class="time">6:40</button> <br>
+      <button id="7_0" class="time">7:00</button><button id="7_2" class="time">7:20</button><button id="7_4" class="time">7:40</button> <!-- <br> -->
+      <button id="8_0" class="time">8:00</button><button id="8_2" class="time">8:20</button><button id="8_4" class="time">8:40</button> <br>
+      <button id="9_0" class="time">9:00</button><button id="9_2" class="time">9:20</button><button id="9_4" class="time">9:40</button> <!-- <br> -->
+      <button id="10_0" class="time">10:00</button><button id="10_2" class="time">10:20</button><button id="10_4" class="time">10:40</button> <br>
+      <button id="11_0" class="time">11:00</button><button id="11_2" class="time">11:20</button><button id="11_4" class="time">11:40</button> <!-- <br> -->
+      <!-- <button id="12_0" class="time">12:00</button><button id="12_2" class="time">12:20</button><button id="12_4" class="time">12:40</button>  -->
+      <button id="13_0" class="time">13:00</button><button id="13_2" class="time">13:20</button><button id="13_4" class="time">13:40</button> <br>
+      <button id="14_0" class="time">14:00</button><button id="14_2" class="time">14:20</button><button id="14_4" class="time">14:40</button> <!-- <br> -->
+      <button id="15_0" class="time">15:00</button><button id="15_2" class="time">15:20</button><button id="15_4" class="time">15:40</button> <br>
+      <button id="16_0" class="time">16:00</button><button id="16_2" class="time">16:20</button><button id="16_4" class="time">16:40</button> <!-- <br> -->
+      <button id="17_0" class="time">17:00</button><button id="17_2" class="time">17:20</button><button id="17_4" class="time">17:40</button> <br>
+      <button id="18_0" class="time">18:00</button><button id="18_2" class="time">18:20</button><button id="18_4" class="time">18:40</button> <!-- <br> -->
+      <button id="19_0" class="time">19:00</button><button id="19_2" class="time">19:20</button><button id="19_4" class="time">19:40</button> <br>
+      <button id="20_0" class="time">20:00</button><button id="20_2" class="time">20:20</button><button id="20_4" class="time">20:40</button> <!-- <br> -->
+      <button id="21_0" class="time">21:00</button><button id="21_2" class="time">21:20</button><button id="21_4" class="time">21:40</button> <br>
+      <button id="22_0" class="time">22:00</button><button id="22_2" class="time">22:20</button><button id="22_4" class="time">22:40</button> <!-- <br> -->
+      <button id="23_0" class="time">23:00</button><button id="23_2" class="time">23:20</button><button id="23_4" class="time">23:40</button> <br>
+      <div>
+        <form onsubmit="someFunction();" name="Availability">
+          <input type="text" placeholder="Attendee's Name">
+          <button type="button" onclick="return false; someCheckingFunction() ">Submit Availability</button>
+        </form>
+      </div>
     </span>
 
     <!-- <div>
