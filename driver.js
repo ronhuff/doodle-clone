@@ -76,6 +76,7 @@ var driver =
         console.log(person.lastname + " is an attendee of meeting " + meeting.name + " on " + meeting.date + ". It's " + person.isAttendee + " driver.js:72 *DBG");
         this.meetings.push(meeting);
         this.meetings[this.numMeetings].attendees.push(person);
+        /*
         for(i = 0; i < this.meetings[this.numMeetings].numTimeSlots; i++)
         {
             if(t2 == 0)
@@ -112,7 +113,7 @@ var driver =
             timeslot.attendees.push(person);
             if(timeslot.startMin == "00") timeslot.startMin = 0;
             meeting.timeSlots.push(timeslot);
-        }
+        }*/
         console.log(this.numMeetings);
         console.log(this.meetings);
         this.meetings[this.numMeetings].stime = meeting.stime;
@@ -122,6 +123,8 @@ var driver =
 
         this.numMeetings++;
         alert("Meeting successfully created!");
+        console.log(this.meetings[this.numMeetings]);
+        
         return (true);
     }
 };
