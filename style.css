@@ -15,10 +15,25 @@ input {
     margin: 0 auto;
 }
 
-h1 {
-    margin: 0 auto;
+.header {
+    display: inline;
     color: white;
+    text-align: inherit;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 80%;
 }
+
+.nav {
+  width: 50%;
+  text-align: center;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
 p {
   line-height: 80%;
 }
@@ -32,12 +47,6 @@ p {
   color: white;
 }
 
-.header {
-  display: inline-block;
-  margin-left: 20px;
-  margin-top: 8px;
-}
-
 /* Dropdown Menu*/
 .dropmenu {
     background-color: #3498DB;
@@ -46,7 +55,7 @@ p {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    width: 100%;
 }
 
 .Event_list {
@@ -115,3 +124,7 @@ p {
 
 .show {display: block;}
 /*End of Dropdown Menu*/
+
+.selected {
+  background-color: green;
+}
