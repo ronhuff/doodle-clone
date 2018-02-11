@@ -59,13 +59,7 @@
                          numAttend:1
                     };
 
-                    var timeslot =
-                    {
-                        tsStime:"12:00",//these are default values for templating purposes and may not be necessary.
-                        tsEtime:"12:20",
-                        attendees:[],//if person is in this array, they are available for this timeslot in the meeting
-                        numAttendees:0
-                    };
+
 
                     //These variables enable more robust time checking.
                     //They may add more clutter but for now they shall remain.
@@ -81,6 +75,50 @@
 
                     meeting.numTimeSlots = ( meeting.totalMins / 20 );
                     console.log("TimeSlots = " + meeting.numTimeSlots);
+                    var t1 = startHr;
+                    var t2 = startMin;
+                    var t3 = endHr;
+                    var t4 = endMin;
+                    if(!dupPersons)
+                    {
+                        var person = {firstname:"", lastname:creator, isAttendee:true};
+                    }
+                    else
+                    {
+                        for(i = 0; i < this.numPersons; i++)
+                        {
+                            if(this.knownPersons[i].lastname == creator)
+                            {
+                                var person = this.knownPersons[i];
+                                break;
+                            }
+                        }
+                    }
+                    console.log("evdem.html:97 *DBG");
+                    for(i = 0; i < numTimeSlots; i++)
+                    {
+                        console.log("ev_demo.html:99 *DBG");
+                        //if(( (t1 != t3) && t2 !>))
+                        var timeslot =
+                        {
+
+                            stime:String(t1) + ':' + String(t2),//these are default values for templating purposes and may not be necessary.
+                            if( (t2 + 20) == 0)
+                            {
+                                t1++;//This accounts for starting at 4:40 and ending at 5:00
+                            }
+                            etime:String(t1) + ':' + String(t2 + 20),
+                            startHr:t1,
+                            startMin:t2,
+                            endHr:t3,
+                            endMin:t4,
+                            attendees:[],//if person is in this array, they are available for this timeslot in the meeting
+                            numAttendees:1
+                        };
+                        console.log("pushing timeslots ev_demo.html:117 *DBG");
+                        timeslot.attendees.push(person);
+                        meeting.timeSlots.push(timeslot);
+                    }
 
                     //TODO: see if this would be a good place to ensure meeting
                     //      attendees as well as timeslot attendees are populated.
@@ -97,15 +135,16 @@
                         //creates a person for the driver's knownPersons array.
                         var person =
                         {
-                             firstname:creator,
-                             lastname:""
+                             firstname:"",
+                             lastname:creator,
+                             isAttendee:true
                         };
 
                         console.log("Attempting to log the person");
-                        console.log(person.firstname);
+                        console.log(person.lastname);
                         this.knownPersons.push(person);
 
-                        console.log(person.firstname + "Added to knownPersons[] *DBG");
+                        console.log(person.lastname + "Added to knownPersons[] *DBG");
                         this.numPersons++;
                         this.meetings[this.numMeetings].attendees.push(person);
                         //TODO:Perhaps this would be a good place to increment numattend.

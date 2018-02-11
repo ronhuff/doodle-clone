@@ -151,10 +151,10 @@ function dupPersons()
     {   //loops through known persons. if creator's name matches a name in knownPersons then dupPersons() returns false. else true.
         for(i = 0; i < driver.numPersons; i++)
         {
-            console.log(driver.knownPersons[i].firstname);
+            console.log(driver.knownPersons[i].lastname);
             console.log("Creator = " + creator + " data1.js:90 *DBG");
-            console.log("driver.knownPersons[i].firstname = " + driver.knownPersons[i].firstname);
-            if(driver.knownPersons[i].firstname == creator)
+            console.log("driver.knownPersons[i].lastname = " + driver.knownPersons[i].lastname);
+            if(driver.knownPersons[i].lastname == creator)
             {
                 console.log("Person already exists, not adding to knownPersons[] *DBG");
                 return(true);
@@ -242,3 +242,30 @@ function exportToSpread(object)
     var stringToWrite = JSON.stringify(object);
     return(stringToWrite);
 }
+
+//this function should only run if the person object passed in has property .isAttendee: true
+//paramater may have to be this?? depends on the calling situation.
+//Meeting CAN be some useless variable if necessary(e.g. false) however, it can also be a meeting object.
+/*
+function findConflict(person, meeting = false)
+{
+    if(!meeting)//this block would be for during a creation step and I think should have access to stime and etime.
+    {
+        for(i = 0; i < driver.numMeetings; i++)
+        {
+            for(j = 0; j < driver.meetings[i].numAttend; j++)
+            {
+                if(person.lastname == driver.meetings[i].persons[j].name)
+                {
+                    console.log("Person " + person.lastname + " is an attendee in meeting " + driver.meetings[i].name + ". data1.js:259");
+                    for(k = 0; k < driver.meetings[i].numTimeSlots; k++)
+                    {
+                        if(driver.meetings[i].timeSlots[k].stime)
+                    }
+                    break;
+                }
+            }
+        }
+    }
+}
+*/
