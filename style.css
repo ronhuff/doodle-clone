@@ -15,25 +15,36 @@ input {
     margin: 0 auto;
 }
 
-h1 {
-    margin: 0 auto;
+.header {
+    display: inline;
     color: white;
+    text-align: inherit;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 80%;
 }
+
+.nav {
+  width: 50%;
+  text-align: center;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
 p {
   line-height: 80%;
 }
 
 #credits {
-  margin-top: 80px;
+  margin: 80px 20px;
+  float: right;
+  text-align: right;
   border-radius: 5px;
   max-width: 150px;
   color: white;
-}
-
-.header {
-  display: inline-block;
-  margin-left: 20px;
-  margin-top: 8px;
 }
 
 /* Dropdown Menu*/
@@ -44,18 +55,38 @@ p {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-}
-
-iframe {
-  float: right;
-  display: inline-block;
+    width: 100%;
 }
 
 .Event_list {
-  width: 50%;
-  text-align: center
+  /*width: 50%;*/
+  max-width: 800px;
+  text-align: center;
   display: inline-block;
+  vertical-align: top;
+}
+
+.event {
+  width: 600px;
+  height: 50px;
+  background-color: rgba(200, 250, 210, .5);
+  border: solid black 2px;
+  border-radius: 6px;
+  margin: 5px 20px;
+}
+
+.availability {
+  vertical-align: top;
+  /*width: 50%;*/
+  text-align: center;
+  display: inline-block;
+}
+
+.time {
+  width: 80px;
+  background-color: rgba(200, 210, 250, .9);
+  margin: 5px 5px;
+  border-radius: 3px;
 }
 
 .dropmenu:hover, .dropmenu:focus {
@@ -65,6 +96,12 @@ iframe {
 .menu {
     position: relative;
     display: inline-block;
+}
+
+.button_container {
+  position: relative;
+  display: inline-block;
+  float: right;
 }
 
 .dd-items {
@@ -86,4 +123,7 @@ iframe {
 .dd-items a:hover {background-color: #ddd}
 
 .show {display: block;}
-/*End of Dropdown Menu*/
+
+.selected {
+  background-color: green;
+}
