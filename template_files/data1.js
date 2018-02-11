@@ -7,7 +7,8 @@
              constraints are met.
 *******************************************************************************/
 
-//TODO: TIMESLOTS. Investigate exporting to CSV.
+//TODO:
+
 // Global declarations, perhaps unnecessary.
 
 
@@ -32,7 +33,7 @@ function exportData(object)
     }
     else
     {
-        console.log(object + " does not appear to be an object. data1.js:21 *DBG");
+        console.log(object + " does not appear to be an object. data1.js:37 *DBG");
         return(false);
     }
 }
@@ -50,6 +51,7 @@ function populateData()
 {
     data = document.forms["eventMaker"];
 
+    //All these values are strings at this point.
     creator = data["admin"].value;
     event_name = data["event_name"].value;
     date = data["date"].value;
@@ -60,9 +62,7 @@ function populateData()
 //CREATION CONSTRAINTS
 function checkDate()
 {
-    console.log("Entered CheckDate()");
-    console.log(date);
-    console.log(date.slice(5,7) + "/" + date.slice(8,10));
+    console.log("Entered CheckDate(). data1.js:65");
 
     //New Year's Day.
     if(date.slice(5,7) == "01" && date.slice(8,10) == "01")
@@ -88,53 +88,65 @@ function checkDate()
 
 function checkTime() // where time is HH:MM && time1 is begin, time2 is end
 {
-    //Check for timeslot compliance.
+    console.log("Entered checkTime(). data1.js:91");
 
-    console.log("Entered checkTime()");
-    console.log(stime + " " + etime);
-
+    //Convert these values to Numbers to make math easier.
     var startHr = Number(stime.slice(0, 2));
     var startMin = Number(stime.slice(3, 5));
     var endHr = Number(etime.slice(0, 2));
     var endMin = Number(etime.slice(3, 5));
+
     if( (( startMin % 20 == 0 ) && ( endMin % 20 == 0 )) == false )
     {
-        alert("Meeting must begin and end on the hour or 20 minute increments thereof.");
         console.log("startMin || endMin not on timeslot");
+        alert("Meeting must begin and end on the hour or 20 minute increments thereof.");
         return(false);
     }
-    console.log(startHr, startMin, endHr, endMin + " data1.js:74 *DBG");
 
     //Check for overnight
     if( (startHr >= "00" && startHr < "05") || (endHr > "00" && endHr <= "05") )
     {
-        console.log("hour values indicate time must be between 12:00 am - 5:00 am");
+        console.log("Error: Meeting Start || End overnight.");
         alert("Meetings may not occur between 12:00am - 5:00am");
         return(false);
     }
     //Check for lunch.
     else if( (startHr >= "12" && startHr < "13") || ( ( endHr >= "12" && endMin > "00" ) && endHr <= "13"))
     {
-        console.log("hour values indicate time requested must be between 12:00pm - 01:00pm");
+        console.log("Error: Meeting Start || End lunch.");
         alert("Meetings may not occur between 12:00pm - 1:00pm");
         return(false);
     }
+
     //Check if meeting would span the restricted overnight period.
-    else if( startHr >= "05" && endHr > "12")
+    //NOTE: Even though they can choose only one day, a user could attempt to schedule
+    //      an end time in the AM even though their begin time is PM. This will account for that.
+    //      Also, we can use >= 13 because we already checked for meetings that span lunch.
+    else if( startHr >= "13" && endHr < 13)
     {
-        console.log("Hour values indicate that the meetiung would go through lunch.");
-        alert("Meetings may not extend through lunch.");
+        console.log(startHr + " " + endHr);
+        console.log("Error: Meeting end time >=");
+        alert("Meetings must begin and end on the same calendar day.");
+        return(false);
     }
+
     //Check if meeting would span the restricted lunch period.
-    else if( startHr >= "13" && endHr >= "00")
+    else if( (startHr >= "05" && startHr < "12") && endHr > "13")
+    {
+        console.log("Hour values indicate that the meeting would go through lunch.");
+        alert("Meetings may not extend through lunch.");
+        return(false);
+    }
+
     //Check to assure that meeting will start and end on the same calendar day.
+    //Perhaps redundant now but it's not broke so we won't fix it yet.
     if(etime < stime)
     {
         alert("Meeting may not extend into next calendar day.");
         console.log("User attempted to set end time for calendar day that is not same as start time calendar day.");
         return (false);
     }
-    console.log("Time does not appeaer to conflict with time constraints.");
+    console.log("Time does not appear to conflict with time constraints.");
     return (true);
 }
 
@@ -144,7 +156,7 @@ function checkTime() // where time is HH:MM && time1 is begin, time2 is end
 //code another way to account for this for other cases.
 function dupPersons()
 {
-    console.log("entered dupPersons(data1.js:85)");
+    console.log("Entered dupPersons(). data1.js:159");
     //Check to make sure persons exist.
     if(driver.numPersons == 0) return (false);
     else
@@ -180,7 +192,7 @@ function dupMeet()
             && driver.meetings[i].creator == creator)
         {
             alert("This event has already been created!");
-            console.log("Duplicat event detected *DBG");
+            console.log("Duplicate event detected *DBG");
             return(true);
         }
         else
@@ -196,19 +208,16 @@ function tryCreate()
 {
     if(!checkDate())
     {
-        alert("Please fix date error(s) and resubmit.");
         console.log("Date constraints failed *DBG");
         return (false);
     }
     else if(!checkTime())
     {
-        alert("Please fix timer error(s) and resubmit.");
         console.log("Time constraints failed *DBG");
         return (false);
     }
     else if(dupMeet())
     {
-        alert("Meeting already exists, unable to create duplicate.");
         console.log("Event not created.");
     }
     else
@@ -220,10 +229,10 @@ function tryCreate()
                         " has been created for " + driver.meetings[driver.numMeetings - 1].date);
         }
         //DEBUG Logs
-        console.log(driver.meetings[0].name);
-        console.log(driver.meetings[0].date);
-        console.log(driver.meetings[0].stime);
-        console.log(driver.meetings[0].etime);
+        //console.log(driver.meetings[0].name);
+        //console.log(driver.meetings[0].date);
+        //console.log(driver.meetings[0].stime);
+        //console.log(driver.meetings[0].etime);
     }
 }
 
