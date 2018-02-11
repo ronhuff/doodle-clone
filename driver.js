@@ -111,7 +111,10 @@ var driver =
             if(timeslot.startMin == "00") timeslot.startMin = 0;
             meeting.timeSlots.push(timeslot);
         }
-
+        console.log(this.numMeetings);
+        console.log(this.meetings);
+        console.log(this.meetings[this.numMeetings].stime);
+        console.log(this.meetings[this.numMeetings].etime);
         this.numMeetings++;
         alert("Meeting successfully created!");
         return (true);
