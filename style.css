@@ -1,8 +1,8 @@
 body {
     /*Background gradients created by https://uigradients.com/# */
-    background: #000000;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #232526, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #232526, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     height: 1080px;
 }
@@ -34,11 +34,19 @@ input {
 h2 {
   font-family: "Georgia", Times, serif;
   color: #3498DB;
+  text-align: center;
+  width: 100%;
 }
 
 h1 {
   width: 100%;
   text-align: center;
+}
+
+.kHeaders {
+  color: white;
+  font-size: 1.5em;
+
 }
 
 h3 {
@@ -69,6 +77,11 @@ p {
     border: none;
     cursor: pointer;
     width: 100%;
+}
+
+#avail_List {
+  margin-top: 20px;
+  float: left;
 }
 
 #evName {
@@ -131,7 +144,6 @@ h4 {
 
 .availability {
   vertical-align: top;
-  /*width: 50%;*/
   text-align: center;
   display: inline-block;
 }
@@ -186,6 +198,9 @@ h4 {
   font-size: 17px;
   font-family: "Georgia", Times, serif;
   color: white
+}
 
-
+.chosen {
+  border: solid 2px #3498DB;
+  color: black;
 }
