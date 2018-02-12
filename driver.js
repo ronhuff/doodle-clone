@@ -14,7 +14,8 @@ function findAttendees(index, createMode)//createMode: bool - True if called fro
             meeting.timeSlots[i].attend:[];
             for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
             {
-                //
+                //if an attendee's available time slot matches the ith timeslot of the meeting
+                //that attendee is pushed to that timeslot's attendee array created at line 14
                 if(meeting.peopleAttending[j].personsAvailability[k] == meeting.timeSlots[i])
                 {
                     meeting.timeSlots[i].attend.push(meeting.peopleAttending[j]);
