@@ -1,7 +1,9 @@
 var buttons = document.querySelectorAll(".time"); //array of time time slots
 var eventList = document.querySelector(".Event_list"); //DOM object for the event list
 var eventItems = document.querySelectorAll("h4"); //event list's items
+var availList = document.querySelector("#avail_List") //event's list of availabilities
 var timeSlots = [];
+let slotList = [];
 var selectedList = [];
 var twelveHourMode = false; //boolean for what time mode user wants
 var personName = ""; //global variables to be passed out
@@ -50,6 +52,8 @@ function addListEvents() {
           if(element.innerHTML === thisTimeSlots[j]) element.classList.add("chosen"); //outline which times the creator chose
         })
       }
+
+      showAvailability(events.arrayOfEvents[searchingForEvents(h4event)]);
     });
   }
 }
@@ -92,6 +96,35 @@ function eventSubmit() { //send
   for(var i = 0; i < buttons.length; i++) { //for all time slot buttons...
     if(buttons[i].classList.contains("selected")) { //if the time slot is marked...
       selectedList.push(timeSlots[i]); //add it to the availability array
+    }
+  }
+}
+
+function showAvailability(event) {
+  availList.innerHTML = "";
+  slotList = [];
+
+  let availAtts = {
+    time: "",
+    attendees: []
+  }
+
+  buttons.forEach(function(timeID) {
+    availAtts.attendees = [];
+    availAtts.time = timeID.id;
+
+    for(var i = 0; i < event.numOfPeopleAttending; i++) {
+      if(event.peopleAttending[i].personsAvailability.includes(availAtts.time)) {
+        availAtts.attendees.push(event.peopleAttending[i].personsName)
+      }
+    }
+
+    slotlist.push(availAtts)
+  });
+
+  for(var k = 0; k < slotList.length; k++) {
+    if(slotList[k].attendees.length > 0) {
+      availList.innerHTML += "<li>" + slotList[k].time + " - " + attendees.join(', ') + "</li>";
     }
   }
 }
