@@ -12,7 +12,7 @@ function findAttendees(index)
     {
         for(var j = 0; j < meeting.numOfPeopleAttending; j++)//loop through each attendee of the meeting.
         {
-            meeting.timeSlots[i].attend:[];
+            meeting.timeSlots[i].attend = [];
             for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
             {
                 //if an attendee's available time slot matches the ith timeslot of the meeting
