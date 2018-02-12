@@ -186,6 +186,9 @@ h4 {
   font-size: 17px;
   font-family: "Georgia", Times, serif;
   color: white
+}
 
-
+.chosen {
+  border: solid 2px #3498DB;
+  color: black;
 }

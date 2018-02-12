@@ -32,13 +32,26 @@ function init() {
 }
 
 function addListEvents() {
-  eventItems = document.querySelectorAll("h4");
-  for(var i = 0; i < eventItems.length; i++) {
-    eventItems[i].addEventListener("click", function() {
-      for(var i = 0; i < eventItems.length; i++) {
-    	   eventItems[i].classList.remove("highlighted");
+  eventItems = document.querySelectorAll("h4"); //Load h4s into eventItems Array.
+  for(var i = 0; i < eventItems.length; i++) { //For each event item <h4>...
+    eventItems[i].addEventListener("click", function() { //Add event on click that...
+      for(let j = 0; j < eventItems.length; j++) {
+    	   eventItems[j].classList.remove("highlighted"); //First remove's all other <h4>'s highlighted class
       }
-      this.classList.add("highlighted");
+      this.classList.add("highlighted"); //Add Highlighted to the clicked event <h4>
+
+      buttons.forEach(function(element) { //For each time slot button
+        element.classList.remove("chosen"); //remove chosen class that indicates creator made is available at this time
+      });
+      
+      var currentEInfo = this.innerHTML;
+      var h4event = currentEInfo.substr(0, currentEInfo.indexOf('-')).slice(0, -1);
+      var thisTimeSlots = events.arrayOfEvents[searchingForEvents(h4event)].timeSlots;
+      for(let j = 0; j < thisTimeSlots.length; j++) {
+        buttons.forEach(function(element) {
+          if(element.innerHTML === thisTimeSlots[j]) element.classList.add("chosen");
+        })
+      }
     });
   }
 }
@@ -56,18 +69,6 @@ function addButtonEvents() {
     });
   }
 }
-
-////////////////////////////////////////////////////////////////////////////////
-//                             NOT THE REAL FUNCTION
-////////////////////////////////////////////////////////////////////////////////
-function sendAvail(a, b, c) {
-  console.log(a);
-  console.log(b);
-  console.log(c);
-}
-////////////////////////////////////////////////////////////////////////////////
-//                                    DELETE PLS
-////////////////////////////////////////////////////////////////////////////////
 
 function populateTimeSlots() {
   buttons.forEach(function(element) {
