@@ -7,7 +7,6 @@
   </head>
   <script src="newDataFile.js"> </script>
   <body onload="init();gettingData()">
-
     <div class="header">
       <span class="nav menu">
           <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
@@ -17,25 +16,12 @@
           </div>
       </span>
       <span class="nav button_container">
-        <button onclick="toggleMode()" class="dropmenu">Switch Time Mode</button>
+          <button onclick="toggleMode()" class="dropmenu">Switch Time Mode</button>
       </span>
       <h1>Create an Event!</h1>
     </div>
-  <br>
-  <br>
-  <span class="availability">
-      <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
-           MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
-       <!-- <input type="time" name="stime" placeholder="Start Time">
-       <input type="time" name="etime" placeholder="End Time"> -->
-      <br>
-
-     <br>
-     <br>
-     <br>
-    </form>
-    </span>
     <br>
+
     <div class="Event_list">
       <h3>Choose An Event:</h3>
     </div>
@@ -71,7 +57,7 @@
           <!-- <input type="time" name="stime" placeholder="Start Time">
           <input type="time" name="etime" placeholder="End Time"> -->
 
-          <button type="button" onclick="eventSubmit();enteringEvent(selectedList);console.log(events.numOfEvents)">Create Event</button>
+          <button type="button" onclick="eventSubmit();enteringEvent(selectedList);console.log(events.numOfEvents);appendEvent(nEvent)">Create Event</button>
        </form>
      </div>
    </span>
