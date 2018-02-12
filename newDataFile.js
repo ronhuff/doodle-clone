@@ -101,8 +101,23 @@ function dupMeet(){
     }
 }
 
-function dupPeople(){
+function searchingForEvents(name){
+  for(var i = 0; i < events.numOfEvents; i++){
+    if(name === events.arrayOfEvents[i].nameOfEvent){
+      return(i);
+    }
+  }
+}
+
+function dupPeople(person,events){
   //checks if any checks if there is any duplicate people in the event that they are trying to check into.
+  var index = searchingForEvents(person);
+  for(var i = 0; i < events.arrayOfEvents[index].numOfPeopleAttending; i++){
+    if(person === events.arrayOfEvents[index].peopleAttending[i].personsName){
+      return(false);
+    }
+  }
+  return(true);
 }
 
 function enteringEvent(popTimeSlots){
