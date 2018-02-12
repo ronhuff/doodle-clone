@@ -31,18 +31,16 @@ function init() { //function called on page load. sets up page:
   addListEvents(); //adds a bunch of onclick-events to the list items. (see immediately below)
 }
 
+//Here's the doozy, lads!
 function addListEvents() {
   eventItems = document.querySelectorAll("h4"); //Load h4s into eventItems Array.
   for(var i = 0; i < eventItems.length; i++) { //For each event item <h4>...
     eventItems[i].addEventListener("click", function() { //Add event on click that...
-      for(let j = 0; j < eventItems.length; j++) {
-    	   eventItems[j].classList.remove("highlighted"); //First remove's all other <h4>'s highlighted class
-      }
+
+      removeHilighted(); //remove all other list item highlighted
       this.classList.add("highlighted"); //Add Highlighted to the clicked event <h4>
 
-      buttons.forEach(function(element) { //For each time slot button
-        element.classList.remove("chosen"); //remove chosen class that indicates creator made is available at this time
-      });
+      removeChosen(); //Takes off chosen class from each time slot button;
 
       var currentEInfo = this.innerHTML;
       var h4event = currentEInfo.substr(0, currentEInfo.indexOf('-')).slice(0, -1);
@@ -54,6 +52,18 @@ function addListEvents() {
       }
     });
   }
+}
+
+function removeHilighted() {
+  for(let j = 0; j < eventItems.length; j++) {
+     eventItems[j].classList.remove("highlighted"); //First remove's all other <h4>'s highlighted class
+  }
+}
+
+function removeChosen() {
+  buttons.forEach(function(element) { //For each time slot button
+    element.classList.remove("chosen"); //remove chosen class that indicates creator made is available at this time
+  });
 }
 
 function submitAvail() { //sets global eveals

@@ -34,7 +34,6 @@ input {
 h2 {
   font-family: "Georgia", Times, serif;
   color: #3498DB;
-  font-size: em;
   text-align: center;
   width: 100%;
 }
@@ -42,6 +41,12 @@ h2 {
 h1 {
   width: 100%;
   text-align: center;
+}
+
+.kHeaders {
+  color: white;
+  font-size: 1.5em;
+
 }
 
 h3 {
