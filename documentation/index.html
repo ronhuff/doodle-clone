@@ -26,7 +26,7 @@
 	       <li>addEvent(arrayOfSlots): Assigns values to the properties associated with eventInfo(). It also performs constraint checks on dates and duplicate meetings.
          Returns true if the date and time checks are passed. In this case, person and event counters are incremented and the event is
           added to events.arrayOfEvents. Otherwise, it returns false. </li>
-          <div class="textBody"> PRE-COND: None || POST-COND: Writes values to eventInfo() || RETURN: True if all checks are passed; false if not.  <div><br>
+         <div class="textBody"> PRE-COND: None || POST-COND: Writes values to eventInfo() || RETURN: True if all checks are passed; false if not.  <div><br>
          <li>checkDate(): Ensures that meetings are not created on January 1st, July 4th, and December 25th.</li>
          <div class="textBody"> PRE-COND: None || POST-COND: Check is done that meeting is not created on certain dates || RETURN: True if date is valid; false otherwise. <div><br>
          <li>dupMeet(): Checks if an event with the same name exists at creation.</li>
@@ -53,6 +53,13 @@
          <div class="textBody"> PRE-COND: None || POST-COND: Adjusts to either 12 or 24 hour time mode || RETURN: none <div><br>
          <li>toggleMode(): Switches twelveHourMode back and forth to the 24 hour time mode and correspondingly repopulates the time slot button text fields.  </li>
          <div class="textBody"> PRE-COND: Change Time Mode button must be pressed || POST-COND: Toggles time between 12 or 24 hour displays || RETURN: none <div><br>
+         <li>removeHighlighted(): Removes all other h4 header's highlighted class.  </li>
+         <div class="textBody"> PRE-COND: None || POST-COND: Removes highlighted class || RETURN: none <div><br>
+         <li>removeChosen(): Removes chosen class that indicates creator is available at this time.  </li>
+         <div class="textBody"> PRE-COND: None || POST-COND: Removes chosen class || RETURN: none <div><br>
+          <li>submitAvail(): Sets event name that is marked for availability.  </li>
+          <div class="textBody"> PRE-COND: None || POST-COND: Sets event name marked for availability || RETURN: none <div><br>
+            
     </ul>
 
 
