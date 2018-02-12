@@ -107,6 +107,7 @@ function toggleMode() {
 
 function appendEvent(isValid, eventName, eventDate) {
   if(isValid) eventList.innerHTML += "<h4>" + eventName + " - " + eventDate + "</h4>";
+  addListEvents();
 }
 
 function populateEventList() {
