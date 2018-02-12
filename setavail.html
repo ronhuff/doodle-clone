@@ -52,13 +52,11 @@
       <button id="23:00" class="time">23:00</button><button id="23:20" class="time">23:20</button><button id="23:40" class="time">23:40</button> <br>
       <div>
         <br>
-        <form onsubmit="someFunction();" name="Availability">
+        <form name="Availability">
           <input type="text" placeholder="Attendee's Name" name="attendee" maxlength="64" id="aNameBox">
           <button type="button" onclick="eventSubmit(); submitAvail(); sendAvail(personName, highlightedEvent, selectedList); return false;" id="setAvail">Submit Availability</button>
         </form>
       </div>
-
-      <h3 id="currentEvent"></h3>
     </span>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
