@@ -30,6 +30,11 @@ input {
   text-align: center;
 }
 
+h2 {
+  font-family: "Georgia", Times, serif;
+  color: #3498DB;
+}
+
 h1 {
   width: 100%;
   text-align: center;
@@ -168,4 +173,12 @@ h3 {
 
 .selected {
   background-color: green;
+}
+
+.textBody {
+  font-size: 17px;
+  font-family: "Georgia", Times, serif;
+  color: white
+
+
 }
