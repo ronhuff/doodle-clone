@@ -24,12 +24,6 @@
   <br>
   <br>
   <span class="availability">
-    <form name = "eventMaker">
-      <input type="text" name="event_name" placeholder="Event name" maxlength="064" required=true type=string id="evName">
-      <br><br>
-      <input type="text" name="admin" placeholder="Creator last name" maxlength="064" required=true type=string id="lName">
-      <br>
-      <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
       <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
            MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
        <!-- <input type="time" name="stime" placeholder="Start Time">
@@ -39,7 +33,6 @@
      <br>
      <br>
      <br>
-      <button type="button" onclick="eventSubmit();enteringEvent(selectedList);console.log(events.numOfEvents)">Create Event</button>
     </form>
     </span>
     <br>
@@ -78,7 +71,7 @@
           <!-- <input type="time" name="stime" placeholder="Start Time">
           <input type="time" name="etime" placeholder="End Time"> -->
 
-         <button type="button" id="Avail" onclick="eventSubmit();console.log(driver.numMeetings);">Create Event</button>
+          <button type="button" onclick="eventSubmit();enteringEvent(selectedList);console.log(events.numOfEvents)">Create Event</button>
        </form>
      </div>
    </span>

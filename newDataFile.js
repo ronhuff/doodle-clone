@@ -107,7 +107,9 @@ function dupPeople(){
 
 function enteringEvent(popTimeSlots){
   getData();
-  addEvent(popTimeSlots);
+  if(addEvent(popTimeSlots) === true){
+    alert('The Event "'+nEvent+'" was created!')
+  }
 }
 
 /*function tableCreate() {
