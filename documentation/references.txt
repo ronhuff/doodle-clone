@@ -1,0 +1,15 @@
+The only bit of code that we did not write was for the background in style.css file.
+
+body {
+    /*Background gradients created by https://uigradients.com/# */
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    height: 1080px;
+}
+
+This was to get the particular color we used for the background in all html pages.
+
+Website:
+https://uigradients.com/#
