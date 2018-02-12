@@ -1,9 +1,10 @@
+<!-- HTML documentaiton page can be found through documentation folder on GitHub and is also linked to in the web application's landing page.-->
 <!DOCTYPE html>
 <html>
 
 
   <head>
-    <title>HTML documentation containing class information.</title>
+    <title>HTML Documentation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../style.css">
   </head>
@@ -14,14 +15,36 @@
       <h1>Doodle-Clone Documentation</h1>
     </div>
     <h2>Overview:</h2>
-    <div class="textBody">Our doodle clone utilized mainly JavaScript, HTML, and CSS. To perform data storage, we used localStorage, a built in HTML function that takes in a key which stores any sort of information you want it to.
-      We utilized this store the object-converted string of event objects. <div>
+    <div class="textBody">Our doodle clone utilized mainly JavaScript, HTML, and CSS. To perform data storage, we used localStorage, a built in HTML function to sort any type of information using a key. Data is then parsed back at retrieval
+      and the resulting object is placed in an array containing all live events.
+       <div>
     <h2>Functions:</h2>
     <div class="textbody">
     <ul>
-	       <li></li>
-	       <li></li>
+	       <li>getData(): Retrieves values from the form designed in eventMaker() and assigns those values to JavaScript variables.</li>
+	       <li>addEvent(arrayOfSlots): Assigns values to the properties associated with eventInfo(). It also performs constraint checks on dates and duplicate meetings.
+         Returns true if the date and time checks are passed. In this case, person and event counters are incremented and the event is
+          added to events.arrayOfEvents. Otherwise, it returns false. </li>
+         <li>checkDate(): Ensures that meetings are not created on January 1st, July 4th, and December 25th.</li>
+         <li>dupMeet(): Checks if an event with the same name exists at creation.</li>
+         <li>enteringEvent(): Calls getData() and addEvent(popTimeSlots)</li>
+         <li>storeData(): Stringifies an object to a JSON string and stores it in localStorage.</li>
+         <li>gettingDate(): Retrieves string data for a particular object from localStorage. This is done with the key value "objectString". Once this is done, the string is parsed and the object is assigned to a particular event in the
+         array of events. </li>
+         <li>dropdownMenu(): Acts as an onclick action for the HTML dropdown menu.</li>
+         <li>init(): Initializer function to create button events, as well as populate timeslots and HTML buttons. It calles in order, addButtonEvents(), populateTimeSlots(), and
+         populateButtonHTML().</li>
+         <li>addButtonEvents(): Defines event listeners for the buttons. </li>
+         <li>populateTimeSlots(): Pushes timeslots into timeSlots array. </li>
+         <li>eventSubmit(): Determines which timeslots are selected and adds them to a selectedList of timeSlots. </li>
+         <li>populateButtonHTML(): Adds correct time text to buttons. It accounts for 12 hour or 24 hour time mode.  </li>
+         <li>toggleMode(): Switches twelveHourMode back and forth to the 24 hour time mode and correspondingly repopulates the time slot button text fields.  </li>
     </ul>
+
+
+    <br>
+    <h2>EECS 448: Software Engineering I, Project 1</h2>
+    <div class="textBody">Team 1 code documented through private GitHub repository.  <div>
 
   </body>
 </html>

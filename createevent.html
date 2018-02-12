@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <script src="newDataFile.js"> </script>
-  <body onload="init();gettingData()">
+  <body onload="gettingData(); init();">
     <div class="header">
       <span class="nav menu">
           <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
@@ -49,7 +49,7 @@
      <div>
        <form name = "eventMaker">
          <input type="text" name="event_name" placeholder="Event name" maxlength="064" required=true type=string id="evName">
-         <input type="text" name="admin" placeholder="Creator last name" maxlength="064" required=true type=string id="lName">
+         <input type="text" name="admin" placeholder="Creator name" maxlength="064" required=true type=string id="lName">
          <br>
          <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
          <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
@@ -57,10 +57,11 @@
           <!-- <input type="time" name="stime" placeholder="Start Time">
           <input type="time" name="etime" placeholder="End Time"> -->
 
-          <button type="button" onclick="eventSubmit();enteringEvent(selectedList);console.log(events.numOfEvents);appendEvent(nEvent)">Create Event</button>
+          <button type="button" onclick="eventSubmit();enteringEvent(selectedList);appendEvent(valid, nEvent, eDate)">Create Event</button>
        </form>
      </div>
    </span>
+    <script src="event_name"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="functions.js"></script>

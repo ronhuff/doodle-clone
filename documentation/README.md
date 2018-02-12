@@ -1,17 +1,7 @@
 # doodle-clone
-A collaborative project to create a Doodle clone.
+A collaborative project to create a Doodle clone. Project was completed in JavaScript, HTML, and CSS.  Data storage was performed through localStorage. LocalStorage is an in-built html function that allows storage of any sort of data with a key. Project has four html pages including a landing page (welcome page with credits), a Create Event page that allows for creation of an event, a set availability page that allows a user to go in and set their availability for any particular event, and a documentation page. 
 
-Generally speaking, this project could only have two main pages, e.g. availability.html & createevent.html.
-The first page a user should see would be availability. Here, a user could set or modify their current availability.
-Anytime a user wishes to create an event, then the browser could navigate to createevent.html.
+Final HTML pages are viewable in a browser. 
+Project was done through JavaScript because developers believed it would be easily navigable. 
 
-On this point, are the two htmls even necessary? I don't know enough about web development but couldn't our JS code
-simply switch "modes" to allow the user to access all of the functionality that comes with creating events. This would allow for
-a better user experience since they would not have to ever leave the initial page.
-
-Data storage is an obstacle. As we have talked about, we should use some sort of I/O file solution. I'm not sure if a spreadsheet
-or just a text document would work better. But in any case, it would probably be good to write some methods for outFiling
-and inFiling to/from the document. These would be run whenever the page closes/opens.
-
-At this point this is just brainstorming and perhaps an unconventional use of GitHub and the repository's README file.
-But we all start some place and this is mine.
+Doodle-clone was completed as a part of project 1 for EECS 448, Software Engineering I. Team 1 contributor's are listed on the home page of the web application.

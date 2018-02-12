@@ -1,8 +1,8 @@
 body {
     /*Background gradients created by https://uigradients.com/# */
-    background: #000000;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #232526, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #232526, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     height: 1080px;
 }
@@ -12,6 +12,7 @@ form {
 }
 
 input {
+    font-family: "Georgia", Times, serif;
     margin: 0 auto;
 }
 
@@ -38,6 +39,11 @@ h2 {
 h1 {
   width: 100%;
   text-align: center;
+}
+
+h3 {
+  font-family: "Georgia", Times, serif;
+  color: #3498DB;
 }
 
 p {
@@ -109,11 +115,17 @@ a {
   vertical-align: top;
 }
 
-h3 {
+.highlighted {
   color: #3498DB;
 }
 
+h3 {
+  color: #3498DB;
+  font-family: "Georgia", Times, serif;
+}
+
 h4 {
+  font-family: "Georgia", Times, serif;
   color: white;
 }
 
@@ -174,6 +186,9 @@ h4 {
   font-size: 17px;
   font-family: "Georgia", Times, serif;
   color: white
+}
 
-
+.chosen {
+  border: solid 2px #3498DB;
+  color: black;
 }
