@@ -3,7 +3,6 @@ var eventList = document.querySelector(".Event_list")
 var timeSlots = [];
 var selectedList = [];
 var twelveHourMode = false;
-var
 
 function dropdownMenu() {
     document.getElementById("dropdown").classList.toggle("show");
