@@ -19,48 +19,51 @@
           <button onclick="toggleMode()" class="dropmenu">Switch Time Mode</button>
       </span>
       <h1>Create an Event!</h1>
+      <h2>The event creator's selected times will be outlined in blue! View event availability below!</h2>
     </div>
     <br>
-
-    <div class="Event_list">
-      <h3>Choose An Event:</h3>
-    </div>
-    <span class="availability">
-     <h3>Available Times:</h3>
-     <button id="05:00" class="time">5:00</button><button id="05:20" class="time">5:20</button><button id="05:40" class="time">5:40</button> <!-- <br> -->
-     <button id="06:00" class="time">6:00</button><button id="06:20" class="time">6:20</button><button id="06:40" class="time">6:40</button> <br>
-     <button id="07:00" class="time">7:00</button><button id="07:20" class="time">7:20</button><button id="07:40" class="time">7:40</button> <!-- <br> -->
-     <button id="08:00" class="time">8:00</button><button id="08:20" class="time">8:20</button><button id="08:40" class="time">8:40</button> <br>
-     <button id="09:00" class="time">9:00</button><button id="09:20" class="time">9:20</button><button id="09:40" class="time">9:40</button> <!-- <br> -->
-     <button id="10:00" class="time">10:00</button><button id="10:20" class="time">10:20</button><button id="10:40" class="time">10:40</button> <br>
-     <button id="11:00" class="time">11:00</button><button id="11:20" class="time">11:20</button><button id="11:40" class="time">11:40</button> <!-- <br> -->
-     <!-- <button id="12:00" class="time">12:00</button><button id="12:20" class="time">12:20</button><button id="12:40" class="time">12:40</button> <br> -->
-     <button id="13:00" class="time">13:00</button><button id="13:20" class="time">13:20</button><button id="13:40" class="time">13:40</button> <br>
-     <button id="14:00" class="time">14:00</button><button id="14:20" class="time">14:20</button><button id="14:40" class="time">14:40</button> <!-- <br> -->
-     <button id="15:00" class="time">15:00</button><button id="15:20" class="time">15:20</button><button id="15:40" class="time">15:40</button> <br>
-     <button id="16:00" class="time">16:00</button><button id="16:20" class="time">16:20</button><button id="16:40" class="time">16:40</button> <!-- <br> -->
-     <button id="17:00" class="time">17:00</button><button id="17:20" class="time">17:20</button><button id="17:40" class="time">17:40</button> <br>
-     <button id="18:00" class="time">18:00</button><button id="18:20" class="time">18:20</button><button id="18:40" class="time">18:40</button> <!-- <br> -->
-     <button id="19:00" class="time">19:00</button><button id="19:20" class="time">19:20</button><button id="19:40" class="time">19:40</button> <br>
-     <button id="20:00" class="time">20:00</button><button id="20:20" class="time">20:20</button><button id="20:40" class="time">20:40</button> <!-- <br> -->
-     <button id="21:00" class="time">21:00</button><button id="21:20" class="time">21:20</button><button id="21:40" class="time">21:40</button> <br>
-     <button id="22:00" class="time">22:00</button><button id="22:20" class="time">22:20</button><button id="22:40" class="time">22:40</button> <!-- <br> -->
-     <button id="23:00" class="time">23:00</button><button id="23:20" class="time">23:20</button><button id="23:40" class="time">23:40</button> <br>
-     <div>
-       <form name = "eventMaker">
-         <input type="text" name="event_name" placeholder="Event name" maxlength="064" required=true type=string id="evName">
-         <input type="text" name="admin" placeholder="Creator name" maxlength="064" required=true type=string id="lName">
-         <br>
-         <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
-         <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
-              MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
-          <!-- <input type="time" name="stime" placeholder="Start Time">
-          <input type="time" name="etime" placeholder="End Time"> -->
-
-          <button type="button" onclick="eventSubmit();enteringEvent(selectedList);appendEvent(valid, nEvent, eDate)">Create Event</button>
-       </form>
+      <div>
+      <div class="Event_list">
+        <h3>Choose An Event:</h3>
+      </div>
+      <span class="availability">
+       <h3>Available Times:</h3>
+       <button id="05:00" class="time">5:00</button><button id="05:20" class="time">5:20</button><button id="05:40" class="time">5:40</button> <!-- <br> -->
+       <button id="06:00" class="time">6:00</button><button id="06:20" class="time">6:20</button><button id="06:40" class="time">6:40</button> <br>
+       <button id="07:00" class="time">7:00</button><button id="07:20" class="time">7:20</button><button id="07:40" class="time">7:40</button> <!-- <br> -->
+       <button id="08:00" class="time">8:00</button><button id="08:20" class="time">8:20</button><button id="08:40" class="time">8:40</button> <br>
+       <button id="09:00" class="time">9:00</button><button id="09:20" class="time">9:20</button><button id="09:40" class="time">9:40</button> <!-- <br> -->
+       <button id="10:00" class="time">10:00</button><button id="10:20" class="time">10:20</button><button id="10:40" class="time">10:40</button> <br>
+       <button id="11:00" class="time">11:00</button><button id="11:20" class="time">11:20</button><button id="11:40" class="time">11:40</button> <!-- <br> -->
+       <!-- <button id="12:00" class="time">12:00</button><button id="12:20" class="time">12:20</button><button id="12:40" class="time">12:40</button> <br> -->
+       <button id="13:00" class="time">13:00</button><button id="13:20" class="time">13:20</button><button id="13:40" class="time">13:40</button> <br>
+       <button id="14:00" class="time">14:00</button><button id="14:20" class="time">14:20</button><button id="14:40" class="time">14:40</button> <!-- <br> -->
+       <button id="15:00" class="time">15:00</button><button id="15:20" class="time">15:20</button><button id="15:40" class="time">15:40</button> <br>
+       <button id="16:00" class="time">16:00</button><button id="16:20" class="time">16:20</button><button id="16:40" class="time">16:40</button> <!-- <br> -->
+       <button id="17:00" class="time">17:00</button><button id="17:20" class="time">17:20</button><button id="17:40" class="time">17:40</button> <br>
+       <button id="18:00" class="time">18:00</button><button id="18:20" class="time">18:20</button><button id="18:40" class="time">18:40</button> <!-- <br> -->
+       <button id="19:00" class="time">19:00</button><button id="19:20" class="time">19:20</button><button id="19:40" class="time">19:40</button> <br>
+       <button id="20:00" class="time">20:00</button><button id="20:20" class="time">20:20</button><button id="20:40" class="time">20:40</button> <!-- <br> -->
+       <button id="21:00" class="time">21:00</button><button id="21:20" class="time">21:20</button><button id="21:40" class="time">21:40</button> <br>
+       <button id="22:00" class="time">22:00</button><button id="22:20" class="time">22:20</button><button id="22:40" class="time">22:40</button> <!-- <br> -->
+       <button id="23:00" class="time">23:00</button><button id="23:20" class="time">23:20</button><button id="23:40" class="time">23:40</button> <br>
+       <div>
+         <form name = "eventMaker">
+           <input type="text" name="event_name" placeholder="Event name" maxlength="064" required=true type=string id="evName">
+           <input type="text" name="admin" placeholder="Creator name" maxlength="064" required=true type=string id="lName">
+           <br>
+           <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
+            <button type="button" onclick="eventSubmit();enteringEvent(selectedList);appendEvent(valid, nEvent, eDate)">Create Event</button>
+         </form>
+       </div>
+     </span>
      </div>
-   </span>
+     </div>
+     <div>
+       <ul id="avail_List">
+
+       </ul>
+     </div>
     <script src="event_name"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

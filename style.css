@@ -33,7 +33,10 @@ input {
 
 h2 {
   font-family: "Georgia", Times, serif;
-  color: #3498DB;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  width: 100%;
 }
 
 h1 {
@@ -69,6 +72,11 @@ p {
     border: none;
     cursor: pointer;
     width: 100%;
+}
+
+#avail_List {
+  margin-top: 20px;
+  float: left;
 }
 
 #evName {
@@ -131,7 +139,6 @@ h4 {
 
 .availability {
   vertical-align: top;
-  /*width: 50%;*/
   text-align: center;
   display: inline-block;
 }
