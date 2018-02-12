@@ -11,18 +11,18 @@ function addEvent(arrayOfSlots)
 @return bool - True if dates are ok, false if one is a holiday.
 function checkDate()
 
-@brief dupMeet() checks if an event exists with the same name.
+@brief - dupMeet() checks if an event exists with the same name.
 @return bool - True if no duplicate exists. False if a duplicate DOES exist.
 function dupMeet()
 
-@brief enteringEvent calls getData() as well as addEvent(popTimeSlots).
+@brief - enteringEvent calls getData() as well as addEvent(popTimeSlots).
 @param array - The group of selected timeslots.
 function enteringEvent(popTimeSlots)
 
-@brief storeData() stringifies the events object data and stores it in localStorage.
+@brief - storeData() stringifies the events object data and stores it in localStorage.
 function storeData()
 
-@brief gettingData() retrieves a string object from localStorage with key “objectString”. It parses the string and assigns that object to events.
+@brief - gettingData() retrieves a string object from localStorage with key “objectString”. It parses the string and assigns that object to events.
 
 Objects:
 
