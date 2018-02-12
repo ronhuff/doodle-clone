@@ -58,12 +58,52 @@ p {
     width: 100%;
 }
 
+#evName {
+  margin: 0;
+  width: 49%;
+  float: left;
+}
+
+#evDate {
+  float: left;
+  width: 49%;
+}
+
+#lName {
+  margin: 0;
+  width: 49%;
+  float: right;
+}
+
+#aNameBox {
+  margin: 0;
+  width: 60%;
+}
+
+#Avail {
+  width: 49%;
+  float: right;
+}
+
+#setAvail {
+  margin: 0;
+  width: 30%;
+}
+
+a {
+  color: white;
+}
+
 .Event_list {
   /*width: 50%;*/
-  max-width: 800px;
+  width: 800px;
   text-align: center;
   display: inline-block;
   vertical-align: top;
+}
+
+h3 {
+  color: #3498DB;
 }
 
 .event {
