@@ -30,6 +30,11 @@ input {
   text-align: center;
 }
 
+h2 {
+  font-family: "Georgia", Times, serif;
+  color: #3498DB;
+}
+
 h1 {
   width: 100%;
   text-align: center;
@@ -108,13 +113,8 @@ h3 {
   color: #3498DB;
 }
 
-.event {
-  width: 600px;
-  height: 50px;
-  background-color: rgba(200, 250, 210, .5);
-  border: solid black 2px;
-  border-radius: 6px;
-  margin: 5px 20px;
+h4 {
+  color: white;
 }
 
 .availability {
@@ -168,4 +168,12 @@ h3 {
 
 .selected {
   background-color: green;
+}
+
+.textBody {
+  font-size: 17px;
+  font-family: "Georgia", Times, serif;
+  color: white
+
+
 }

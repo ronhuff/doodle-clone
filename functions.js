@@ -1,7 +1,9 @@
 var buttons = document.querySelectorAll(".time");
+var eventList = document.querySelector(".Event_list")
 var timeSlots = [];
 var selectedList = [];
 var twelveHourMode = false;
+var
 
 function dropdownMenu() {
     document.getElementById("dropdown").classList.toggle("show");
@@ -23,6 +25,7 @@ function init() {
   addButtonEvents();
   populateTimeSlots();
   populateButtonHTML();
+  populateEventList();
 }
 
 function addButtonEvents() {
@@ -66,4 +69,16 @@ function populateButtonHTML() {
 function toggleMode() {
   twelveHourMode = !twelveHourMode;
   populateButtonHTML();
+}
+
+function appendEvent(eventName) {
+  eventList.innerHTML += "<h4>" + eventName + "</h4>"
+}
+
+function populateEventList() {
+  if (events.numOfEvents > 0) {
+    for(var i = 0; i < events.numOfEvents; i++) {
+      eventList.innerHTML += "<h4>" + events.arrayOfEvents[i].nameOfEvent + "</h4>"
+    }
+  }
 }
