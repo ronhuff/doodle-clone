@@ -50,7 +50,7 @@ function setTimes(buttonid)
     {
         console.log("meeting.stime = " + meeting.stime);
         console.log("meeting.etime = " + meeting.etime);
-        
+
         if(meeting.stime == "HH:MM")
         {
             meeting.stime = "0" + buttonid[0] + ":" + buttonid[buttonid.length - 1] + "0";
