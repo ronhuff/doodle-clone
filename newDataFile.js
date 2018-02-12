@@ -43,7 +43,7 @@ function addEvent(arrayOfSlots){
   };
   var personInfo = {
     personsName: eventInfo.creator,
-    personsAvailability: []
+    personsAvailability: arrayOfSlots
   };
   if(checkDate() === false){
     alert("Please re-enter the date of the event.")
@@ -104,21 +104,11 @@ function dupMeet(){
 
 function searchingForEvents(name){
   for(var i = 0; i < events.numOfEvents; i++){
-    if(name === events.arrayOfEvents[i].nameOfEvent){
+    if(name == events.arrayOfEvents[i].nameOfEvent){
       return(i);
     }
   }
-}
-
-function dupPeople(person,events){
-  //checks if any checks if there is any duplicate people in the event that they are trying to check into.
-  var index = searchingForEvents(person);
-  for(var i = 0; i < events.arrayOfEvents[index].numOfPeopleAttending; i++){
-    if(person === events.arrayOfEvents[index].peopleAttending[i].personsName){
-      return(false);
-    }
-  }
-  return(true);
+  return(-1);
 }
 
 function enteringEvent(popTimeSlots){
@@ -127,9 +117,21 @@ function enteringEvent(popTimeSlots){
     valid = true;
     alert('The Event "'+nEvent+'" was created!');
   }
-  else valid = false;
+  else {
+    valid = false;
+  }
 }
 
+function sendAvail(person, evName, array){
+  var eventIndex = searchingForEvents(evName);
+  var personInfo = {
+    personsName: person,
+    personsAvailability: array
+  };
+  events.arrayOfEvents[eventIndex].peopleAttending.push(personInfo);
+  events.arrayOfEvents[eventIndex].numOfPeopleAttending++;
+  alert('Person added to '+evName+' evevnt.')
+}
 function storeData(){
   localStorage.setItem("objectString", JSON.stringify(events));
 }
