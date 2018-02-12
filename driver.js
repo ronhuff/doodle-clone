@@ -3,29 +3,29 @@
 //pull from event list in diego's file.  when meeting is clicked...
 //get array of times, for each one, find which attendees can go at that time.
 
-function findAttendees(index, createMode)//createMode: bool - True if called from create, false if called from setAvail
+//findAttendees() will add available persons to each meeting's timeslot they have indicated they are available for.
+function findAttendees(index)
 {
     var tSlotAttend = [];
     var meeting = events.arrayOfEvents[index]
-    if(createMode == true)
+
+    for(var i = 0; i < meeting.numOfTimeSlots; i++) //loop through the meeting's timeslot.
     {
-        for(var i = 0; i < meeting.numOfTimeSlots; i++) //loop through the meeting's timeslot.
+        for(var j = 0; j < meeting.numOfPeopleAttending; j++)//loop through each attendee of the meeting.
         {
-            for(var j = 0; j < meeting.numOfPeopleAttending; j++)//loop through each attendee of the meeting.
+            meeting.timeSlots[i].attend:[];
+            for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
             {
-                meeting.timeSlots[i].attend:[];
-                for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
+                //if an attendee's available time slot matches the ith timeslot of the meeting
+                //that attendee is pushed to that timeslot's attendee array created at line
+                if(meeting.peopleAttending[j].personsAvailability[k] == meeting.timeSlots[i])
                 {
-                    //if an attendee's available time slot matches the ith timeslot of the meeting
-                    //that attendee is pushed to that timeslot's attendee array created at line
-                    if(meeting.peopleAttending[j].personsAvailability[k] == meeting.timeSlots[i])
-                    {
-                        meeting.timeSlots[i].attend.push(meeting.peopleAttending[j]);
-                    }
+                    meeting.timeSlots[i].attend.push(meeting.peopleAttending[j]);
                 }
             }
         }
     }
+    console.log(meeting.timeSlots);
 }
 
 var driver =
