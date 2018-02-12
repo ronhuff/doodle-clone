@@ -52,8 +52,8 @@
       <div>
         <br>
         <form onsubmit="someFunction();" name="Availability">
-          <input type="text" placeholder="Attendee's Name" id="aNameBox">
-          <button type="button" onclick="return false; someCheckingFunction()" id="setAvail">Submit Availability</button>
+          <input type="text" placeholder="Attendee's Name" name="attendee" maxlength="64" id="aNameBox">
+          <button type="button" onclick="eventSubmit(); submitAvail(); sendAvail(personName, highlightedEvent, selectedList); return false;" id="setAvail">Submit Availability</button>
         </form>
       </div>
 

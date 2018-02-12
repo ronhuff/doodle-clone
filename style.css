@@ -115,7 +115,14 @@ a {
   vertical-align: top;
 }
 
+.highlighted {
+  color: #3498DB;
+}
 
+h3 {
+  color: #3498DB;
+  font-family: "Georgia", Times, serif;
+}
 
 h4 {
   color: white;
