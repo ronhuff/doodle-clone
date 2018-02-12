@@ -1,3 +1,19 @@
 Doodle-Clone Process Model Documentation
 Kyle Berkley, Ron Huff, Weiting Wei, Surabhi Khachar, Diego Garcia (Team 1)
-The process model we most closely followed was the Spiral Model. 
+
+
+The process model we most closely followed was the Spiral Model. The essence of this model is creating multiple prototypes in order to limit the number of risks in a project.
+The reason our approach fell closely in line with the spiral model because frequently throughout development, we evaluated whether certain aspects would take too much time or effort
+and proceeded based on that. For example, when we were trying to decide what language and platform we were going to use to code the doodle-clone, we had to evaluate how much each team member felt
+comfortable with JavaScript, C++, HTML, CSS, what kind of data storage methods we would use, how modular our code would be with each approach, etc.
+
+Another example of risk analysis was when we were attempting to figure out the method used for data storage. Our first approach was to use the Google Spreadsheets API. However, working and integrating
+it into our work was not the most simple task. Authentication plays a huge role with many APIs, especially this one. And attempting to read and write data to spreadsheets from local JavaScript code
+requires complex authentication flow which we were not totally capable of. Since JavaScript does not do any sort of file I/O to local files, we resorted to doing local storage for our data manipulation.
+
+The spiral model continuously has developers evaluating objectives, alternatives, and constraints. These three components played a vital role in our software development. While we were not totally systematic
+100% of the time, we kept these three aspects prioritized throughout. After almost every bit of functionality was added there was testing done to ensure it was properly integrated with the rest of the application.
+
+The biggest obstacle to overcome in following such a model was that since it was reliant on risk analysis, there was not always a confirmed direction present that was being followed. This process model requires a lot of
+flexibility which can be a pro and con. We were able to adapt quickly to any given problem or turn in our project. However, there were times when we felt as if there was no clear direction that a particular portion of the project
+was headed towards.
