@@ -109,6 +109,10 @@ a {
   vertical-align: top;
 }
 
+.highlighted {
+  color: #3498DB;
+}
+
 h3 {
   color: #3498DB;
 }
