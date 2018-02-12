@@ -82,6 +82,7 @@ p {
 #avail_List {
   margin-top: 20px;
   float: left;
+  list-style: none;
 }
 
 #evName {
