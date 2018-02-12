@@ -3,7 +3,7 @@
 
 
   <head>
-    <title>HTML documentation containing class information.</title>
+    <title>HTML Documentation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../style.css">
   </head>
@@ -19,14 +19,17 @@
     <h2>Functions:</h2>
     <div class="textbody">
     <ul>
-	       <li>getData():</li>
-	       <li>addEvent():</li>
-         <li>checkDate():</li>
-         <li>dupMeet():</li>
-         <li>enteringEvent():</li>
-         <li>storeData():</li>
-         <li>gettingDate():</li>
-      
+	       <li>getData(): Retrieves values from the form designed in eventMaker() and assigns those values to JavaScript variables.</li>
+	       <li>addEvent(arrayOfSlots): Assigns values to the properties associated with eventInfo(). It also performs constraint checks on dates and duplicate meetings.
+         Returns true if the date and time checks are passed. In this case, person and event counters are incremented and the event is
+          added to events.arrayOfEvents. Otherwise, it returns false. </li>
+         <li>checkDate(): Ensures that meetings are not created on January 1st, July 4th, and December 25th.</li>
+         <li>dupMeet(): Checks if an event with the same name exists at creation.</li>
+         <li>enteringEvent(): Calls getData() and addEvent(popTimeSlots)</li>
+         <li>storeData(): Stringifies an object to a JSON string and stores it in localStorage.</li>
+         <li>gettingDate(): Retrieves string data for a particular object from localStorage. This is done with the key value "objectString". Once this is done, the string is parsed and the object is assigned to a particular event in the
+         array of events. </li>
+
 
     </ul>
 

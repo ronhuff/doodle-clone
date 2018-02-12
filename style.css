@@ -12,6 +12,7 @@ form {
 }
 
 input {
+    font-family: "Georgia", Times, serif;
     margin: 0 auto;
 }
 
@@ -38,6 +39,11 @@ h2 {
 h1 {
   width: 100%;
   text-align: center;
+}
+
+h3 {
+  font-family: "Georgia", Times, serif;
+  color: #3498DB;
 }
 
 p {
@@ -115,6 +121,7 @@ a {
 
 h3 {
   color: #3498DB;
+  font-family: "Georgia", Times, serif;
 }
 
 h4 {
