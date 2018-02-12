@@ -1,5 +1,29 @@
 //NOTE: There are some console.log()'s commented out below they can be handy for debugging purposes.
 
+//pull from event list in diego's file.  when meeting is clicked...
+//get array of times, for each one, find which attendees can go at that time.
+
+function findAttendees(index, createMode)//createMode: bool - True if called from create, false if called from setAvail
+{
+    var tSlotAttend = [];
+    var meeting = events.arrayOfEvents[index]
+    for(var i = 0; i < meeting.numOfTimeSlots; i++) //loop through the meeting's timeslot.
+    {
+        for(var j = 0; j < meeting.numOfPeopleAttending; j++)//loop through each attendee of the meeting.
+        {
+            meeting.timeSlots[i].attend:[];
+            for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
+            {
+                //
+                if(meeting.peopleAttending[j].personsAvailability[k] == meeting.timeSlots[i])
+                {
+                    meeting.timeSlots[i].attend.push(meeting.peopleAttending[j]);
+                }
+            }
+        }
+    }
+}
+
 var driver =
 {
     meetings    : [],

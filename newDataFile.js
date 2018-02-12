@@ -9,7 +9,7 @@ var eventInfo = {
   dateOfEvent: "",
   timeSlots: [],
   numOfTimeSlots: 0,
-  peopleAttending: [],
+  peopleAttending: [],//holds personInfo personsInfo.personsAvailability
   numOfPeopleAttending: 0
 };
 
