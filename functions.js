@@ -1,7 +1,7 @@
 var buttons = document.querySelectorAll(".time");
 var timeSlots = [];
 var selectedList = [];
-var twelveHourMode = true;
+var twelveHourMode = false;
 
 function dropdownMenu() {
     document.getElementById("dropdown").classList.toggle("show");

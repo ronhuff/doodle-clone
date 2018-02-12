@@ -42,8 +42,12 @@
       <button type="button" onclick="eventSubmit();enteringEvent(selectedList);console.log(events.numOfEvents)">Create Event</button>
     </form>
     </span>
-
+    <br>
+    <div class="Event_list">
+      <h3>Choose An Event:</h3>
+    </div>
     <span class="availability">
+     <h3>Available Times:</h3>
      <button id="05:00" class="time">5:00</button><button id="05:20" class="time">5:20</button><button id="05:40" class="time">5:40</button> <!-- <br> -->
      <button id="06:00" class="time">6:00</button><button id="06:20" class="time">6:20</button><button id="06:40" class="time">6:40</button> <br>
      <button id="07:00" class="time">7:00</button><button id="07:20" class="time">7:20</button><button id="07:40" class="time">7:40</button> <!-- <br> -->
@@ -63,11 +67,25 @@
      <button id="21:00" class="time">21:00</button><button id="21:20" class="time">21:20</button><button id="21:40" class="time">21:40</button> <br>
      <button id="22:00" class="time">22:00</button><button id="22:20" class="time">22:20</button><button id="22:40" class="time">22:40</button> <!-- <br> -->
      <button id="23:00" class="time">23:00</button><button id="23:20" class="time">23:20</button><button id="23:40" class="time">23:40</button> <br>
-     <br>
+     <div>
+       <form name = "eventMaker">
+         <input type="text" name="event_name" placeholder="Event name" maxlength="064" required=true type=string id="evName">
+         <input type="text" name="admin" placeholder="Creator last name" maxlength="064" required=true type=string id="lName">
+         <br>
+         <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
+         <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
+              MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
+          <!-- <input type="time" name="stime" placeholder="Start Time">
+          <input type="time" name="etime" placeholder="End Time"> -->
+
+         <button type="button" id="Avail" onclick="eventSubmit();console.log(driver.numMeetings);">Create Event</button>
+       </form>
+     </div>
    </span>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="functions.js"></script>
     <script src="driver.js"></script>
+
   </body>
 </html>
