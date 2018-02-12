@@ -105,8 +105,8 @@ function toggleMode() {
   populateButtonHTML();
 }
 
-function appendEvent(eventName, eventDate) {
-  eventList.innerHTML += "<h4>" + eventName + " - " + eventDate + "</h4>";
+function appendEvent(isValid, eventName, eventDate) {
+  if(isValid) eventList.innerHTML += "<h4>" + eventName + " - " + eventDate + "</h4>";
 }
 
 function populateEventList() {
