@@ -7,18 +7,21 @@ function findAttendees(index, createMode)//createMode: bool - True if called fro
 {
     var tSlotAttend = [];
     var meeting = events.arrayOfEvents[index]
-    for(var i = 0; i < meeting.numOfTimeSlots; i++) //loop through the meeting's timeslot.
+    if(createMode == true)
     {
-        for(var j = 0; j < meeting.numOfPeopleAttending; j++)//loop through each attendee of the meeting.
+        for(var i = 0; i < meeting.numOfTimeSlots; i++) //loop through the meeting's timeslot.
         {
-            meeting.timeSlots[i].attend:[];
-            for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
+            for(var j = 0; j < meeting.numOfPeopleAttending; j++)//loop through each attendee of the meeting.
             {
-                //if an attendee's available time slot matches the ith timeslot of the meeting
-                //that attendee is pushed to that timeslot's attendee array created at line 14
-                if(meeting.peopleAttending[j].personsAvailability[k] == meeting.timeSlots[i])
+                meeting.timeSlots[i].attend:[];
+                for(var k = 0; k < meeting.peopleAttending[j].personsAvailability.length; k++)//loop through attendee's avail TS.
                 {
-                    meeting.timeSlots[i].attend.push(meeting.peopleAttending[j]);
+                    //if an attendee's available time slot matches the ith timeslot of the meeting
+                    //that attendee is pushed to that timeslot's attendee array created at line
+                    if(meeting.peopleAttending[j].personsAvailability[k] == meeting.timeSlots[i])
+                    {
+                        meeting.timeSlots[i].attend.push(meeting.peopleAttending[j]);
+                    }
                 }
             }
         }
