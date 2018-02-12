@@ -7,8 +7,8 @@ var eventInfo = {
   creator: "",
   nameOfEvent: "",
   dateOfEvent: "",
-  startingTime: "HH:MM",
-  endTime: "HH:MM",
+  timeSlots: [],
+  numOfTimeSlots: 0,
   peopleAttending: [],
   numOfPeopleAttending: 0
 };
@@ -22,27 +22,21 @@ var data;
 var maker = "";
 var nEvent = "";
 var eDate = "";
-var sTime = "";
-var eTime = "";
-var nSlots = 0;
 
 function getData(){
   data = document.forms["eventMaker"];
   maker = data["admin"].value;
-  nEvent = data["event"].value;
+  nEvent = data["event_name"].value;
   eDate = data["date"].value;
-  sTime = data["stime"].value;
-  eTime = data["etime"].value;
 }
 
-function addMeeting(){
+function addEvent(arrayOfSlots){
   var eventInfo = {
     creator: maker,
     nameOfEvent: nEvent,
     dateOfEvent: eDate,
-    startingTime: sTime,
-    endTime: eTime,
-    numOfTimeSlots: nSlots,
+    timeSlots: arrayOfSlots,
+    numOfTimeSlots: arrayOfSlots.length,
     peopleAttending: [],
     numOfPeopleAttending: 0
   };
@@ -50,11 +44,7 @@ function addMeeting(){
     personsName: eventInfo.creator,
     personsAvailability: []
   };
-  if(checkTime(eventInfo) === false){
-    alert("Please re-enter the event's start and end times.")
-    return(false);
-  }
-  else if(checkDate() === false){
+  if(checkDate() === false){
     alert("Please re-enter the date of the event.")
     return(false);
   }
@@ -97,44 +87,6 @@ function checkDate()
     }
 }
 
-function checkTime(object) // where time is HH:MM && time1 is begin, time2 is end
-{
-    console.log("Entered checkTime()");
-    console.log(object.startingTime + " " + object.endTime);
-
-    var startHr = Number(object.startingTime.slice(0, 2));
-    var startMin = Number(object.startingTime.slice(3, 5));
-    var endHr = Number(object.endTime.slice(0, 2));
-    var endMin = Number(object.endTime.slice(3, 5));
-    if (startHr > endHr){
-        // checks if the event starts and end on the same day
-        alert("The event must start and end on the same day.");
-        return(false);
-    }
-    else if((startMin%20 !== 0)||(endMin%20 !== 0)){
-        alert("Meeting must begin and end on the hour or 20 minute increments thereof.");
-        return(false);
-    }
-    else if(((startHr >= 00)&&(startHr < 05)) || ((endHr > 00)&&(endHr <= 05))){
-        //Check for overnight
-        alert("Meetings may not occur between 12:00am - 5:00am");
-        return(false);
-    }
-    else if(((startHr >= 12)&&(startHr < 13)) || ((endHr >= 12)&&(endMin > 00)&&(endHr <= 13))){
-        //Check for lunch.
-        alert("Meetings may not occur between 12:00pm - 1:00pm");
-        return(false);
-    }
-    else if(((startHr >= 05)&&(startHr < 13)) && (endHr > 12)){
-        //Check if meeting would span the restricted overnight period.
-        alert("Meetings may not extend through lunch.");
-        return(false)
-    }
-    else {
-      return(true);
-    }
-}
-
 function dupMeet(){
   //checks if any duplicate events have been created.
   //This is done by checking if there is an event with the same name already created.
@@ -151,17 +103,14 @@ function dupMeet(){
 
 function dupPeople(){
   //checks if any checks if there is any duplicate people in the event that they are trying to check into.
-  for(var i = 0; i < )
 }
 
-function eventSubmit(){
+function enteringEvent(popTimeSlots){
   getData();
-  if(addMeeting() === true){
-    tableCreate();
-  }
+  addEvent(popTimeSlots);
 }
 
-function tableCreate() {
+/*function tableCreate() {
     var body = document.getElementsByTagName('body')[0];
     var tbl = document.createElement('table');
     tbl.style.width = '100%';
@@ -211,7 +160,7 @@ function tableCreate() {
     }
     tbl.appendChild(tbdy);
     body.appendChild(tbl)
-}
+}*/
 
 function storeData(){
   localStorage.setItem("objectString", JSON.stringify(events));
@@ -222,7 +171,6 @@ function gettingData(){
       var lastObj = JSON.parse(stringObj)
       events = lastObj;
       console.log(lastObj);
-      //
   }
   else {
   }

@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
-  <body onload="gettingData(); init()">
+  <body onload="init(); gettingData();">
 
     <div class="header">
       <span class="nav menu">
@@ -56,11 +56,13 @@
           <button type="button" onclick="return false; someCheckingFunction()" id="setAvail">Submit Availability</button>
         </form>
       </div>
+
+      <h3 id="currentEvent"></h3>
     </span>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="functions.js"></script>
-    <script> src="newDataFile.js"</script>
+    <script src="newDataFile.js"></script>
 </body>
 </html>

@@ -5,15 +5,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-
-  <body onload="init()">
+  <script src="newDataFile.js"> </script>
+  <body onload="init();gettingData()">
 
     <div class="header">
       <span class="nav menu">
           <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
           <div id="dropdown" class="dd-items">
-              <a href="index.html">Landing Page</a>
-              <a href="setavail.html">Set Availability</a>
+              <a href="index.html" onclick="storeData()">Landing Page</a>
+              <a href="setavail.html" onclick="storeData()">Set Availability</a>
           </div>
       </span>
       <span class="nav button_container">
@@ -21,13 +21,31 @@
       </span>
       <h1>Create an Event!</h1>
     </div>
+  <br>
+  <br>
+  <span class="availability">
+    <form name = "eventMaker">
+      <input type="text" name="event_name" placeholder="Event name" maxlength="064" required=true type=string id="evName">
+      <br><br>
+      <input type="text" name="admin" placeholder="Creator last name" maxlength="064" required=true type=string id="lName">
+      <br>
+      <input type="date" name="date" maxlength="10" required=true type=string id="evDate">
+      <!-- after looking at the html document in a browser, it seems that the date input for a date object is formatted as
+           MM-DD-YYYY the function below doesn't care what the delimiting characters are though so no worries. -->
+       <!-- <input type="time" name="stime" placeholder="Start Time">
+       <input type="time" name="etime" placeholder="End Time"> -->
+      <br>
 
+     <br>
+     <br>
+     <br>
+      <button type="button" onclick="eventSubmit();enteringEvent(selectedList);console.log(events.numOfEvents)">Create Event</button>
+    </form>
+    </span>
     <br>
-
     <div class="Event_list">
       <h3>Choose An Event:</h3>
     </div>
-
     <span class="availability">
      <button id="5_0" class="time" type="button" onclick="setTimes(id);">5:00</button><button id="5_2" class="time" type="button" onclick="setTimes(id);">5:20</button><button id="5_4" class="time" type="button" onclick="setTimes(id);">5:40</button> <!-- <br> -->
      <button id="6_0" class="time" type="button" onclick="setTimes(id);">6:00</button><button id="6_2" class="time" type="button" onclick="setTimes(id);">6:20</button><button id="6_4" class="time" type="button" onclick="setTimes(id);">6:40</button> <br>
@@ -50,8 +68,6 @@
      <button id="23_0" class="time" type="button" onclick="setTimes(id);">23:00</button><button id="23_2" class="time" type="button" onclick="setTimes(id);">23:20</button><button id="23_4" class="time" type="button" onclick="setTimes(id);">23:40</button> <br>
      <br>
    </span>
-
-    <script src="template_files/data1.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="functions.js"></script>
