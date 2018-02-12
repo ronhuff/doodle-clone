@@ -130,7 +130,7 @@ function sendAvail(person, evName, array){
   };
   events.arrayOfEvents[eventIndex].peopleAttending.push(personInfo);
   events.arrayOfEvents[eventIndex].numOfPeopleAttending++;
-  alert('Person added to '+evName+' evevnt.')
+  alert('Person added to '+evName+' event.')
 }
 function storeData(){
   localStorage.setItem("objectString", JSON.stringify(events));
