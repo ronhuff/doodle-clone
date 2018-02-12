@@ -5,28 +5,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
+
   <body onload="gettingData(); init()">
 
     <div class="header">
       <span class="nav menu">
-          <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
-          <div id="dropdown" class="dd-items">
-              <a href="index.html">Landing Page</a>
-              <a href="createevent.html">Create Event</a>
-          </div>
+        <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
+        <div id="dropdown" class="dd-items">
+          <a href="index.html">Landing Page</a>
+          <a href="createevent.html">Create Event</a>
+        </div>
       </span>
       <span class="nav button_container">
         <button onclick="toggleMode()" class="dropmenu">Switch Time Mode</button>
       </span>
-      <h1>Please Set Your Availability!</h1>
+      <h1>Set Your Availability!</h1>
     </div>
 
     <br>
-    <div class="Event_list">
 
+    <div class="Event_list">
+      <h3>Choose An Event:</h3>
     </div>
 
     <span class="availability">
+      <h3>Available Times:</h3>
       <button id="05:00" class="time">05:00</button><button id="05:20" class="time">05:20</button><button id="05:40" class="time">05:40</button> <!-- <br> -->
       <button id="06:00" class="time">06:00</button><button id="06:20" class="time">06:20</button><button id="06:40" class="time">06:40</button> <br>
       <button id="07:00" class="time">07:00</button><button id="07:20" class="time">07:20</button><button id="07:40" class="time">07:40</button> <!-- <br> -->
@@ -47,9 +50,10 @@
       <button id="22:00" class="time">22:00</button><button id="22:20" class="time">22:20</button><button id="22:40" class="time">22:40</button> <!-- <br> -->
       <button id="23:00" class="time">23:00</button><button id="23:20" class="time">23:20</button><button id="23:40" class="time">23:40</button> <br>
       <div>
+        <br>
         <form onsubmit="someFunction();" name="Availability">
-          <input type="text" placeholder="Attendee's Name">
-          <button type="button" onclick="return false; someCheckingFunction() ">Submit Availability</button>
+          <input type="text" placeholder="Attendee's Name" id="aNameBox">
+          <button type="button" onclick="return false; someCheckingFunction()" id="setAvail">Submit Availability</button>
         </form>
       </div>
     </span>
@@ -57,5 +61,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="functions.js"></script>
+    <script> src="newDataFile.js"</script>
 </body>
 </html>
