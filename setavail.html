@@ -5,15 +5,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-
-  <body onload="gettingData();init();">
-
+  <script src="newDataFile.js"></script>
+  <body onload="gettingData(); init();">
     <div class="header">
       <span class="nav menu">
         <button onclick="dropdownMenu()" class="dropmenu">Menu</button>
         <div id="dropdown" class="dd-items">
-          <a href="index.html">Landing Page</a>
-          <a href="createevent.html">Create Event</a>
+          <a href="index.html" onclick="storeData()">Landing Page</a>
+          <a href="createevent.html" onclick="storeData()">Create Event</a>
         </div>
       </span>
       <span class="nav button_container">
@@ -54,7 +53,7 @@
         <br>
         <form name="Availability">
           <input type="text" placeholder="Attendee's Name" name="attendee" maxlength="64" id="aNameBox">
-          <button type="button" onclick="eventSubmit(); submitAvail(); sendAvail(personName, highlightedEvent, selectedList); return false;" id="setAvail">Submit Availability</button>
+          <button type="button" onclick="eventSubmit(); submitAvail(); sendAvail(personName, highlightedEvent, selectedList);" id="setAvail">Submit Availability</button>
         </form>
       </div>
     </span>
@@ -62,6 +61,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="functions.js"></script>
-    <script src="newDataFile.js"></script>
+    <script src="driver.js"></script>
 </body>
 </html>
