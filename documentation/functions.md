@@ -1,3 +1,5 @@
+Documentation for doodle-clone including function names, return values, descriptions, variables, and objects. 
+
 Functions:
 
 @brief - dropdownMenu() acts as an onclick action for the HTML dropdown menu. function dropdownMenu()
@@ -25,3 +27,23 @@ buttons: document.querySelectorAll(".time")
 timeSlots: []
 selectedList: []
 twelveHourMode: false
+
+Objects:
+
+events:
+	.arrayOfEvents: [] @brief - This will hold eventInfo objects.
+	.numOfEvents
+
+eventInfo:
+	.creator
+	.nameOfEvent
+	.dateOfEvent
+	.timeSlots: []
+	.numOfTimeSlots
+	.peopleAttending: []
+	.numOfPeopleAttending: 
+
+personInfo:
+	.personsName
+	.personsAvailability: []
+
