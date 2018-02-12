@@ -15,7 +15,7 @@
     </div>
     <h2>Overview:</h2>
     <div class="textBody">Our doodle clone utilized mainly JavaScript, HTML, and CSS. To perform data storage, we used localStorage, a built in HTML function to sort any type of information using a key. Data is then parsed back at retrieval
-      and the resulting object is placed in an array containing all live events. 
+      and the resulting object is placed in an array containing all live events.
        <div>
     <h2>Functions:</h2>
     <div class="textbody">
@@ -30,6 +30,14 @@
          <li>storeData(): Stringifies an object to a JSON string and stores it in localStorage.</li>
          <li>gettingDate(): Retrieves string data for a particular object from localStorage. This is done with the key value "objectString". Once this is done, the string is parsed and the object is assigned to a particular event in the
          array of events. </li>
+         <li>dropdownMenu(): Acts as an onclick action for the HTML dropdown menu.</li>
+         <li>init(): Initializer function to create button events, as well as populate timeslots and HTML buttons. It calles in order, addButtonEvents(), populateTimeSlots(), and
+         populateButtonHTML().</li>
+         <li>addButtonEvents(): Defines event listeners for the buttons. </li>
+         <li>populateTimeSlots(): Pushes timeslots into timeSlots array. </li>
+         <li>eventSubmit(): Determines which timeslots are selected and adds them to a selectedList of timeSlots. </li>
+         <li>populateButtonHTML(): Adds correct time text to buttons. It accounts for 12 hour or 24 hour time mode.  </li>
+         <li>toggleMode(): Switches twelveHourMode back and forth to the 24 hour time mode and correspondingly repopulates the time slot button text fields.  </li>
 
 
     </ul>
