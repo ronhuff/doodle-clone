@@ -1,0 +1,3 @@
+Doodle-Clone Process Model Documentation
+Kyle Berkley, Ron Huff, Weiting Wei, Surabhi Khachar, Diego Garcia (Team 1)
+The process model we most closely followed was the Spiral Model. 
