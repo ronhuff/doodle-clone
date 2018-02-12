@@ -22,6 +22,7 @@ var data;
 var maker = "";
 var nEvent = "";
 var eDate = "";
+var valid = true;
 
 function getData(){
   data = document.forms["eventMaker"];
@@ -123,8 +124,10 @@ function dupPeople(person,events){
 function enteringEvent(popTimeSlots){
   getData();
   if(addEvent(popTimeSlots) === true){
-    alert('The Event "'+nEvent+'" was created!')
+    valid = true;
+    alert('The Event "'+nEvent+'" was created!');
   }
+  else valid = false;
 }
 
 function storeData(){
